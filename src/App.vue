@@ -1,5 +1,4 @@
 <template>
-  <img class="logo" alt="Vue logo" src="./assets/images.png">
   <router-view/>
 </template>
 
@@ -16,8 +15,13 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+body{
+  padding: 0;
+  margin: 0;
+}
+
 .logo{
   width: 100px;
 }

@@ -12,10 +12,12 @@
 </template>
 
 <script>
+    const bcrypt = require('bcryptjs');
     import axios from 'axios'
     export default {
     name: 'SignUp',
     data() {
+        localStorage.clear();
         return{
             user_name:'',
             user_email:'',
@@ -24,31 +26,33 @@
     },
     methods:{
         async signUp() {
-            let result = axios.post("https://men5.azurewebsites.net/api/user",{
-            //let result = axios.post(variables.API_URL + "user",{
-            //let result = axios.post("http://localhost:49146/api/User",{
-            user_name:this.user_name,
-            user_email:this.user_email,
-            user_password:this.user_password
-        });
-        console.log("Result Response" + result);
-        
-        console.warn(result);
-        if(result.status == 201){
-            alert("SignUp done");
-            localStorage.setItem("user-info", JSON.stringify(result.data));
-            //this.$router.push({name:'MyHome'});
-            }
-            this.$router.push({name:'MyHome'});
+            const saltRounds = 10;
+            const hash = bcrypt.hashSync(this.user_password, saltRounds);
+            await axios.post("https://men5.azurewebsites.net/api/user", {
+                //let result = axios.post(variables.API_URL + "user",{
+                //let result = axios.post("http://localhost:49146/api/User",{
+                user_name:this.user_name,
+                user_email:this.user_email,
+                user_password:hash
+            }).then(resp =>{
+                localStorage.setItem("user-info", JSON.stringify(resp.data));
+                //alert("Registration Erfolgreich");
+                this.$router.push({name:'Home'});
+            }).catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+                });
         }
-        
     },
-    mounted() {
+    mounted() {        
         let user = localStorage.getItem("user-info");
         if(user) {
-            this.$router.push({name:'MyHome'});
-        }
-    }
+            this.$router.push({name:'Home'});
+        } 
+    } 
 }
 </script>
 
