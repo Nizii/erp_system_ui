@@ -24,18 +24,20 @@
         },
         methods: {
             async login() {
-                await axios.get("https://men5.azurewebsites.net/api/user?user_name=" + this.user_name)
+                await axios.get("https://men5.azurewebsites.net/api/user?user_name="+this.user_name+"&user_password="+this.user_password)
+                //let result = axios.post(variables.API_URL + "user",{
+                //let result = axios.post("http://localhost:49146/api/User",{
+                //"http://localhost:49146/api/User", {
                 .then(resp => {
-                    bcrypt.compare(this.user_password, resp.data, function(err, hash_result){
-                        if(hash_result && resp.status == 200 && resp.data.length > 0) {
-                            alert("Login Erfolgreich " + hash_result);
+                        if(resp.status == 200 && resp.data[1] != null && resp.data[2] != null) {
+                            alert(resp.data[0]);
                             localStorage.setItem("user-info", JSON.stringify(resp.data));
                             this.$router.push({name:'Home'});
                         } else {
-                            alert("Login nicht Erfolgreich " + hash_result);
+                            alert(resp.data[0]);
                         }
-                    });
-                }).catch(function (error) {
+                    })
+                .catch(function (error) {
                     if (error.response) {
                         console.log(error.response.data);
                         console.log(error.response.status);

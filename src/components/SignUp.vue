@@ -26,14 +26,43 @@
     },
     methods:{
         async signUp() {
-            const saltRounds = 10;
-            const hash = bcrypt.hashSync(this.user_password, saltRounds);
-            await axios.post("https://men5.azurewebsites.net/api/user", {
+            await axios.post("https://men5.azurewebsites.net/api/user", { 
+                params: {
                 //let result = axios.post(variables.API_URL + "user",{
                 //let result = axios.post("http://localhost:49146/api/User",{
+                //"http://localhost:49146/api/User", {
+                    user_name:this.user_name,
+                    user_email:this.user_email,
+                    user_password:this.user_password
+                }
+            }).then(resp =>{
+                if(resp.status == 200 && resp.data[1] != null && resp.data[2] != null) {
+                    alert(resp.data[0]);
+                    localStorage.setItem("user-info", JSON.stringify(resp.data));
+                    this.$router.push({name:'Home'});
+                } 
+                else {
+                    alert(resp.data[0]);
+                }
+            }).catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+                });
+        }/*,
+        async signUp2() {
+            const saltRounds = 10;
+            const hash = bcrypt.hashSync(this.user_password, saltRounds);
+            await axios.post(//"https://men5.azurewebsites.net/api/user", {
+                //let result = axios.post(variables.API_URL + "user",{
+                //let result = axios.post("http://localhost:49146/api/User",{
+                "http://localhost:49146/api/User", { params: {
                 user_name:this.user_name,
                 user_email:this.user_email,
                 user_password:hash
+                }
             }).then(resp =>{
                 localStorage.setItem("user-info", JSON.stringify(resp.data));
                 //alert("Registration Erfolgreich");
@@ -45,7 +74,7 @@
                     console.log(error.response.headers);
                 }
                 });
-        }
+        },*/
     },
     mounted() {        
         let user = localStorage.getItem("user-info");
