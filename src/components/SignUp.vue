@@ -26,16 +26,12 @@
     },
     methods:{
         async signUp() {
-            await axios.post("https://men5.azurewebsites.net/api/user", { 
-                params: {
+            await axios.post("https://men5.azurewebsites.net/api/user?user_name="+this.user_name+"&user_email="+this.user_email+"&user_password="+this.user_password)
                 //let result = axios.post(variables.API_URL + "user",{
                 //let result = axios.post("http://localhost:49146/api/User",{
                 //"http://localhost:49146/api/User", {
-                    user_name:this.user_name,
-                    user_email:this.user_email,
-                    user_password:this.user_password
-                }
-            }).then(resp =>{
+
+            .then(resp =>{
                 if(resp.status == 200 && resp.data[1] != null && resp.data[2] != null) {
                     alert(resp.data[0]);
                     localStorage.setItem("user-info", JSON.stringify(resp.data));

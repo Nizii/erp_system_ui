@@ -1,6 +1,6 @@
 <template>
     <div class="nav">
-        <a href="#">Kontakte</a>
+        <router-link  to="/customer">Kontakte</router-link>
         <a href="#">Offerten</a>
         <a href="#">Produkte</a>
         <a v-on:click="logout" href="#">Logout</a>

@@ -1,21 +1,18 @@
 <template>
     <Header/>
-    <h1>Welcome {{name}} to Home</h1>
+    <h1>Kontakt hinzufügen</h1>
 </template>
 
 <script>
-import Header from './Header.vue';
+
 export default {
-    name:'Home',
+    name:'UpdateCustomer',
     data() {
         return {
-            name:''
+
         }
     },
-    name:'Home',
-    components: {
-        Header
-    },
+
     mounted() {
         let user = localStorage.getItem("user-info");
         if(!user) {
@@ -25,4 +22,10 @@ export default {
         this.name = array[2].slice(1, -2);
     }
 }
+
+
 </script>
+
+<style>
+
+</style>
