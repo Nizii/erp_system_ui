@@ -1,10 +1,15 @@
 <template>
-    <Header/>
-    <h1>Customer</h1>
+<Header/>
+<h1>Customer</h1>
+<body>
     <thead id="cthead">
         <tr>
             <th> 
-                <router-link type="button" to="/addCustomer">+</router-link>
+                <router-link class="addBtn" type="button" to="/addCustomer">
+                    <button class="addBtn">
+                        +
+                    </button>
+                </router-link>
             </th>
             <th>
                 KundenNr
@@ -43,13 +48,18 @@
                 Email
             </th>
             <th>
+                Delete
             </th>
         </tr>
     </thead>
     <tbody border = "1">
-        <tr v-for = "cus in customer" :key="cus.id">
+        <tr v-for = "cus in customer" :key="cus.customer_nr">
             <td>
-                <router-link type="button" to="/updateCustomer">Update</router-link>
+                <router-link type="button" class="updateBtn" :to="'/updateCustomer/'+cus.customer_nr">
+                    <button class="updateBtn">
+                        B
+                    </button>
+                </router-link>
             </td> 
             <td>{{cus.customer_nr}}</td>
             <td>{{cus.lastname}}</td>
@@ -64,11 +74,12 @@
             <td>{{cus.note}}</td>
             <td>{{cus.email}}</td>
             <td>
-                <button type="button" width="14" height="14">-
+                <button type="button" class="deleteBtn" width="14" height="14">-
                 </button>
             </td>
         </tr>
     </tbody>
+</body>
 </template>
 
 <script>
@@ -105,7 +116,6 @@ export default {
             this.$router.push({name:'SignUp'});
         }
         let result = await axios.get('https://men5.azurewebsites.net/api/Customer');
-        console.warn(result);
         this.customer = result.data;
     }
 }
@@ -113,25 +123,4 @@ export default {
 
 <style>
 
-    thead{
-        background-color: antiquewhite;
-    }
-
-    tbody{
-        background-color: azure;
-    }
-
-    tr{
-        
-    }
-    td{
-        width: 150px;
-        height: 50px;
-    }
-
-
-    button{
-        width: 50px;
-        height: 50px;
-    }
 </style>

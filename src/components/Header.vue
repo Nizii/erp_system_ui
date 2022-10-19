@@ -3,25 +3,38 @@
         <router-link  to="/customer">Kontakte</router-link>
         <a href="#">Offerten</a>
         <a href="#">Produkte</a>
-        <a v-on:click="logout" href="#">Logout</a>
+        <a v-on:click="logout" href="#">Logout {{name}}</a>
     </div>
 </template>
 
 <script>
 export default {
     name:"Header",
+    data() {
+        return {
+            name:''
+        }
+    },
     methods:{
         logout(){
             localStorage.clear();
             this.$router.push({name:"Login"})
         }
+    },
+    mounted() {
+        let user = localStorage.getItem("user-info");
+        if(!user) {
+            this.$router.push({name:'SignUp'});
+        }
+        let array = user.toString().split(",");
+        this.name = array[2].slice(1, -2);
     }
 }
 </script>
 
 <style>
     .nav {
-        background-color: #333;
+        background-color: #483D8B;
         overflow: hidden;
     }
 
@@ -39,4 +52,5 @@ export default {
         background-color: #ddd;
         color: #333;
     }
+    
 </style>

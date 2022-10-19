@@ -1,22 +1,77 @@
 <template>
     <Header/>
     <h1>Kontakt hinzufügen</h1>
+    <form>
+        <input class="addCustomer" type="text" name="lastname" placeholder="Nachname" v-model="customer.lastname"/>
+        <input class="addCustomer" type="text" name="surname" placeholder="Vorname" v-model="customer.surname"/>
+        <input class="addCustomer" type="text" name="dob" placeholder="Geburtsdatum" v-model="customer.dob"/>
+        <input class="addCustomer" type="text" name="street" placeholder="Strasse" v-model="customer.street"/>
+        <input class="addCustomer" type="text" name="nr" placeholder="Hausnummer" v-model="customer.nr"/>
+        <input class="addCustomer" type="text" name="postcode" placeholder="PLZ" v-model="customer.postcode"/>
+        <input class="addCustomer" type="text" name="country" placeholder="Land" v-model="customer.country"/>
+        <input class="addCustomer" type="text" name="cellphone" placeholder="Mobile" v-model="customer.cellphone"/>
+        <input class="addCustomer" type="text" name="landlinephone" placeholder="Festnetz" v-model="customer.landlinephone"/>
+        <input class="addCustomer" type="text" name="note" placeholder="Notizen" v-model="customer.note"/>
+        <input class="addCustomer" type="text" name="email" placeholder="Email" v-model="customer.email"/>
+        <button class="addCustomerBtn" type="button" v-on:click="addCustomer()">
+            Neu hinzufügen
+        </button>
+    </form>
 </template>
 
 <script>
-
+import axios from 'axios';
+import Header from './Header.vue';
 export default {
     name:'AddCustomer',
+    components:{
+        Header
+    },
     data() {
         return {
+            customer:{
+                surname: "",
+                lastname: "",
+                dob: "",
+                street: "",
+                nr: "",
+                postcode: "",
+                country: "",
+                cellphone: "",
+                landlinephone:" ",
+                note: "",
+                email: ""
+            }
+        }
+    },
 
+    methods:{
+        async addCustomer() {
+            const result = await axios.post("https://men5.azurewebsites.net/api/Customer", {
+                surname:this.customer.surname,
+                lastname:this.customer.lastname,
+                dob:this.customer.dob,
+                street:this.customer.street,
+                nr:this.customer.nr,
+                postcode:this.customer.postcode,
+                country:this.customer.country,
+                cellphone:this.customer.cellphone,
+                landlinephone:this.customer.landlinephone,
+                email:this.customer.email,
+                note:this.customer.note
+            });
+            if (result.status == 201 || result.status == 200) {
+                this.$router.push({name:"Customer"});
+            } else {
+                alert("Result " + result.status);
+            }
         }
     },
 
     mounted() {
         let user = localStorage.getItem("user-info");
         if(!user) {
-            this.$router.push({name:'SignUp'});
+            this.$router.push({name:"SignUp"});
         }
         let array = user.toString().split(",");
         this.name = array[2].slice(1, -2);
