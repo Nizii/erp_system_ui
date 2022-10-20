@@ -2,18 +2,18 @@
     <Header/>
     <h1>Kontakt bearbeiten</h1>
     <form>
-        <input class="updateCustomer" type="text" name="lastname" placeholder="Nachname" v-model="customer.lastname"/>
-        <input class="updateCustomer" type="text" name="surname" placeholder="Vorname" v-model="customer.surname"/>
-        <input class="updateCustomer" type="text" name="dob" placeholder="Geburtsdatum" v-model="customer.dob"/>
-        <input class="updateCustomer" type="text" name="street" placeholder="Strasse" v-model="customer.street"/>
-        <input class="updateCustomer" type="text" name="nr" placeholder="Hausnummer" v-model="customer.nr"/>
-        <input class="updateCustomer" type="text" name="postcode" placeholder="PLZ" v-model="customer.postcode"/>
-        <input class="updateCustomer" type="text" name="country" placeholder="Land" v-model="customer.country"/>
-        <input class="updateCustomer" type="text" name="cellphone" placeholder="Mobile" v-model="customer.cellphone"/>
-        <input class="updateCustomer" type="text" name="landlinephone" placeholder="Festnetz" v-model="customer.landlinephone"/>
-        <input class="updateCustomer" type="text" name="note" placeholder="Notizen" v-model="customer.note"/>
-        <input class="updateCustomer" type="text" name="email" placeholder="Email" v-model="customer.email"/>
-        <button class="updateCustomerBtn" type="button" v-on:click="updateCustomer()">
+        <input class="updateInput" type="text" name="lastname" placeholder="Nachname" v-model="customer.lastname"/>
+        <input class="updateInput" type="text" name="surname" placeholder="Vorname" v-model="customer.surname"/>
+        <input class="updateInput" type="text" name="dob" placeholder="Geburtsdatum" v-model="customer.dob"/>
+        <input class="updateInput" type="text" name="street" placeholder="Strasse" v-model="customer.street"/>
+        <input class="updateInput" type="text" name="nr" placeholder="Hausnummer" v-model="customer.nr"/>
+        <input class="updateInput" type="text" name="postcode" placeholder="PLZ" v-model="customer.postcode"/>
+        <input class="updateInput" type="text" name="country" placeholder="Land" v-model="customer.country"/>
+        <input class="updateInput" type="text" name="cellphone" placeholder="Mobile" v-model="customer.cellphone"/>
+        <input class="updateInput" type="text" name="landlinephone" placeholder="Festnetz" v-model="customer.landlinephone"/>
+        <input class="updateInput" type="text" name="note" placeholder="Notizen" v-model="customer.note"/>
+        <input class="updateInput" type="text" name="email" placeholder="Email" v-model="customer.email"/>
+        <button class="updateInputBtn" type="button" v-on:click="updateCustomer()">
             Kontakt ändern
         </button>
     </form>

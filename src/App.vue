@@ -27,7 +27,7 @@ body{
   width: 100px;
 }
 
-.register input, .addCustomer, .updateCustomer{
+.register input, .addInput, .updateInput{
   width: 300px;
   height: 30px;
   display: block;
@@ -38,7 +38,7 @@ body{
   border:1px solid skyblue;
 }
 
-.register button, .addCustomerBtn, .updateCustomerBtn{
+.register button, .addInputBtn, .updateInputBtn{
   width: 320px;
   height: 40px;
   border: 1px solid skyblue;
@@ -81,8 +81,10 @@ button{
 tr{
 
 }
+
 td{
   padding: 10px;
+  width: 100px;
 }
 
 

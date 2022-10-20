@@ -2,14 +2,14 @@
     <Header/>
     <h1>Produkt bearbeiten</h1>
     <form>
-        <input class="addProduct" type="text" name="Produkt" placeholder="Produkt" v-model="product.product_name"/>
-        <input class="addProduct" type="text" name="Dimension" placeholder="Dimension" v-model="product.product_size"/>
-        <input class="addProduct" type="text" name="Beschreibung" placeholder="Beschreibung" v-model="product.description"/>
-        <input class="addProduct" type="text" name="Einheiten verfügbar" placeholder="Einheiten verfügbar" v-model="product.units_available"/>
-        <input class="addProduct" type="text" name="Einheit" placeholder="Einheit" v-model="product.unit"/>
-        <input class="addProduct" type="text" name="Einkaufspreis" placeholder="Einkaufspreis" v-model="product.purchasing_price_per_unit"/>
-        <input class="addProduct" type="text" name="Verkaufspreis" placeholder="Verkaufspreis" v-model="product.selling_price_per_unit"/>
-        <button class="updateCustomerBtn" type="button" v-on:click="updateProduct()">
+        <input class="updateInput" type="text" name="Produkt" placeholder="Produkt" v-model="product.product_name"/>
+        <input class="updateInput" type="text" name="Dimension" placeholder="Dimension" v-model="product.product_size"/>
+        <input class="updateInput" type="text" name="Beschreibung" placeholder="Beschreibung" v-model="product.description"/>
+        <input class="updateInput" type="text" name="Einheiten verfügbar" placeholder="Einheiten verfügbar" v-model="product.units_available"/>
+        <input class="updateInput" type="text" name="Einheit" placeholder="Einheit" v-model="product.unit"/>
+        <input class="updateInput" type="text" name="Einkaufspreis" placeholder="Einkaufspreis" v-model="product.purchasing_price_per_unit"/>
+        <input class="updateInput" type="text" name="Verkaufspreis" placeholder="Verkaufspreis" v-model="product.selling_price_per_unit"/>
+        <button class="updateInputBtn" type="button" v-on:click="updateProduct()">
             Produkt ändern
         </button>
     </form>

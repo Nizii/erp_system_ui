@@ -2,14 +2,14 @@
     <Header/>
     <h1>Produkt hinzufügen</h1>
     <form>
-        <input class="addProduct" type="text" name="Produkt" placeholder="Produkt" v-model="product.product_name"/>
-        <input class="addProduct" type="text" name="Dimension" placeholder="Dimension" v-model="product.product_size"/>
-        <input class="addProduct" type="text" name="Beschreibung" placeholder="Beschreibung" v-model="product.description"/>
-        <input class="addProduct" type="text" name="Einheiten verfügbar" placeholder="Einheiten verfügbar" v-model="product.units_available"/>
-        <input class="addProduct" type="text" name="Einheit" placeholder="Einheit" v-model="product.unit"/>
-        <input class="addProduct" type="text" name="Einkaufspreis" placeholder="Einkaufspreis" v-model="product.purchasing_price_per_unit"/>
-        <input class="addProduct" type="text" name="Verkaufspreis" placeholder="Verkaufspreis" v-model="product.selling_price_per_unit"/>
-        <button class="addCustomerBtn" type="button" v-on:click="addProduct()">
+        <input class="addInput" type="text" name="Produkt" placeholder="Produkt" v-model="product.product_name"/>
+        <input class="addInput" type="text" name="Dimension" placeholder="Dimension" v-model="product.product_size"/>
+        <input class="addInput" type="text" name="Beschreibung" placeholder="Beschreibung" v-model="product.description"/>
+        <input class="addInput" type="text" name="Einheiten verfügbar" placeholder="Einheiten verfügbar" v-model="product.units_available"/>
+        <input class="addInput" type="text" name="Einheit" placeholder="Einheit" v-model="product.unit"/>
+        <input class="addInput" type="text" name="Einkaufspreis" placeholder="Einkaufspreis" v-model="product.purchasing_price_per_unit"/>
+        <input class="addInput" type="text" name="Verkaufspreis" placeholder="Verkaufspreis" v-model="product.selling_price_per_unit"/>
+        <button class="addInputBtn" type="button" v-on:click="addProduct()">
             Neu hinzufügen
         </button>
     </form>

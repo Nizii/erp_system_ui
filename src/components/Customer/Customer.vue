@@ -12,7 +12,7 @@
                 </router-link>
             </th>
             <th>
-                KundenNr
+                Kunden Nr
             </th>
             <th>
                 Vorname
@@ -48,7 +48,7 @@
                 Email
             </th>
             <th>
-                Delete
+                Löschen
             </th>
         </tr>
     </thead>
@@ -74,7 +74,7 @@
             <td>{{cus.note}}</td>
             <td>{{cus.email}}</td>
             <td>
-                <button v-on:click="deleteCustomer(cus.customer_nr)" type="button" class="deleteBtn" width="14" height="14">-
+                <button v-on:click="deleteCustomer(cus.customer_nr)" type="button" class="deleteBtn">-
                 </button>
             </td>
         </tr>
@@ -90,8 +90,6 @@ export default {
     data() {
         return {
             customer:[],
-            newCustomer: false,
-            customer_nr: 1,
             surname: "",
             lastname: "",
             dob: "",

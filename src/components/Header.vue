@@ -1,8 +1,8 @@
 <template>
     <div class="nav">
-        <router-link  to="customer">Kontakte</router-link>
+        <router-link href="#" to="customer">Kontakte</router-link>
         <a href="#">Offerten</a>
-        <a href="#">Produkte</a>
+        <router-link href="#" to="product">Produkte</router-link>
         <a v-on:click="logout" href="#">Logout {{name}}</a>
     </div>
 </template>
@@ -26,6 +26,7 @@ export default {
         if(!user) {
             this.$router.push({name:'SignUp'});
         }
+        console.log(user);
         let array = user.toString().split(",");
         this.name = array[2].slice(1, -2);
     }

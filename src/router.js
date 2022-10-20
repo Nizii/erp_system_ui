@@ -1,12 +1,19 @@
 import Home from'./components/Home.vue'
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
+
 import Customer from './components/Customer/Customer'
 import AddCustomer from './components/Customer/AddCustomer'
 import UpdateCustomer from './components/Customer/UpdateCustomer'
+
 import Product from './components/Product/Product'
 import AddProduct from './components/Product/AddProduct'
 import UpdateProduct from './components/Product/UpdateProduct'
+
+import CustomerBill from './components/CustomerBill/CustomerBill'
+import AddCustomerBill from './components/CustomerBill/AddCustomerBill'
+import UpdateCustomerBill from './components/CustomerBill/UpdateCustomerBill'
+
 import { createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
@@ -43,7 +50,7 @@ const routes = [
     {
         name:'Product',
         component:Product,
-        path:'/customer'
+        path:'/product'
     },
     {
         name:'AddProduct',
@@ -53,7 +60,22 @@ const routes = [
     {
         name:'UpdateProduct',
         component:UpdateProduct,
-        path:'/updateproduct/:id'
+        path:'/updateProduct/:id'
+    },
+    {
+        name:'CustomerBill',
+        component:CustomerBill,
+        path:'/customerBill'
+    },
+    {
+        name:'AddCustomerBill',
+        component:AddCustomerBill,
+        path:'/addCustomerBill'
+    },
+    {
+        name:'UpdateCustomerBill',
+        component:UpdateCustomerBill,
+        path:'/updateCustomerBill/:id'
     }
 
 ];

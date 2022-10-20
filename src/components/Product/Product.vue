@@ -35,10 +35,13 @@
             <th>
                 Verkauf
             </th>
+            <th>
+                Löschen
+            </th>
         </tr>
     </thead>
     <tbody border = "1">
-        <tr v-for = "pro in product" :key="pro.product_nr">
+        <tr v-for = "pro in products" :key="pro.product_nr">
             <td>
                 <router-link type="button" class="updateBtn" :to="'/updateProduct/'+pro.product_nr">
                     <button class="updateBtn">
@@ -55,7 +58,7 @@
             <td>{{pro.purchasing_price_per_unit}}</td>
             <td>{{pro.selling_price_per_unit}}</td>
             <td>
-                <button v-on:click="deleteCustomer(pro.product_nr)" type="button" class="deleteBtn">-
+                <button v-on:click="deleteProduct(pro.product_nr)" type="button" class="deleteBtn">-
                 </button>
             </td>
         </tr>
@@ -95,7 +98,7 @@ export default {
             this.$router.push({name:'SignUp'});
         }
         let result = await axios.get('https://men5.azurewebsites.net/api/Product');
-        this.customer = result.data;
+        this.products = result.data;
         }
     },
 
