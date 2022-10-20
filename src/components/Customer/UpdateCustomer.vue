@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Header from './Header.vue';
+import Header from '../Header.vue';
 import axios from "axios";
 export default {   
     name:'UpdateCustomer',

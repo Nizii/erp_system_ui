@@ -21,7 +21,7 @@
 
 <script>
 import axios from 'axios';
-import Header from './Header.vue';
+import Header from '../Header.vue';
 export default {
     name:'AddCustomer',
     components:{

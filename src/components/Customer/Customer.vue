@@ -1,11 +1,11 @@
 <template>
 <Header/>
-<h1>Customer</h1>
+<h1>Kunde</h1>
 <body>
     <thead id="cthead">
         <tr>
             <th> 
-                <router-link class="addBtn" type="button" to="/addCustomer">
+                <router-link class="addBtn" type="button" to="addCustomer">
                     <button class="addBtn">
                         +
                     </button>
@@ -74,7 +74,7 @@
             <td>{{cus.note}}</td>
             <td>{{cus.email}}</td>
             <td>
-                <button type="button" class="deleteBtn" width="14" height="14">-
+                <button v-on:click="deleteCustomer(cus.customer_nr)" type="button" class="deleteBtn" width="14" height="14">-
                 </button>
             </td>
         </tr>
@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import Header from './Header.vue';
+import Header from '../Header.vue';
 import axios from 'axios';
 export default {
     name:'Home',
@@ -106,17 +106,29 @@ export default {
         }
     },
 
-    components: {
-        Header
-    },
-
-    async mounted() {
+    methods:{
+        async deleteCustomer(id){
+            let result = await axios.delete('https://men5.azurewebsites.net/api/Customer/'+id);
+            if(result.status==200){
+                this.loadData();
+            }
+        },
+        async loadData(){
         let user = localStorage.getItem("user-info");
         if(!user) {
             this.$router.push({name:'SignUp'});
         }
         let result = await axios.get('https://men5.azurewebsites.net/api/Customer');
         this.customer = result.data;
+        }
+    },
+
+    components: {
+        Header
+    },
+
+    async mounted() {
+        this.loadData();
     }
 }
 </script>
