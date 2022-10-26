@@ -2,7 +2,6 @@
     <div class="nav">
         <router-link href="#" to="customer">Kontakte</router-link>
         <router-link href="#" to="customerBill">Kunden Rechungen</router-link>
-        <a href="#">Offerten</a>
         <router-link href="#" to="product">Produkte</router-link>
         <a v-on:click="logout" href="#">Logout {{name}}</a>
     </div>

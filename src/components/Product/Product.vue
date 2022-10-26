@@ -1,8 +1,8 @@
 <template>
 <Header/>
 <h1>Produkte</h1>
-<body>
-    <thead id="cthead">
+<body class="bodyInsideApp">
+    <table>
         <tr>
             <th> 
                 <router-link class="addBtn" type="button" to="addProduct">
@@ -39,9 +39,7 @@
                 Löschen
             </th>
         </tr>
-    </thead>
-    <tbody border = "1">
-        <tr v-for = "pro in products" :key="pro.product_nr">
+        <tr v-for = "pro in products" :key="pro.product_nr" class="pointer">
             <td>
                 <router-link type="button" class="updateBtn" :to="'/updateProduct/'+pro.product_nr">
                     <button class="updateBtn">
@@ -62,7 +60,7 @@
                 </button>
             </td>
         </tr>
-    </tbody>
+    </table>
 </body>
 </template>
 

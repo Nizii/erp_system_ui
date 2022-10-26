@@ -1,8 +1,8 @@
 <template>
 <Header/>
 <h1>Kunde</h1>
-<body>
-    <thead id="cthead">
+<body class="bodyInsideApp">
+    <table border = "1">
         <tr>
             <th> 
                 <router-link class="addBtn" type="button" to="addCustomer">
@@ -51,9 +51,7 @@
                 Löschen
             </th>
         </tr>
-    </thead>
-    <tbody border = "1">
-        <tr v-for = "cus in customer" :key="cus.customer_nr">
+        <tr v-for = "cus in customer" :key="cus.customer_nr" class="pointer">
             <td>
                 <router-link type="button" class="updateBtn" :to="'/updateCustomer/'+cus.customer_nr">
                     <button class="updateBtn">
@@ -78,7 +76,7 @@
                 </button>
             </td>
         </tr>
-    </tbody>
+    </table>
 </body>
 </template>
 
@@ -132,5 +130,4 @@ export default {
 </script>
 
 <style>
-
 </style>

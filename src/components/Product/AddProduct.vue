@@ -2,6 +2,9 @@
     <Header/>
     <h1>Produkt hinzufügen</h1>
     <form>
+        <button class="backBtn" type="button" v-on:click="goback()">
+            Zurück
+        </button>
         <input class="addInput" type="text" name="Produkt" placeholder="Produkt" v-model="product.product_name"/>
         <input class="addInput" type="text" name="Dimension" placeholder="Dimension" v-model="product.product_size"/>
         <input class="addInput" type="text" name="Beschreibung" placeholder="Beschreibung" v-model="product.description"/>
@@ -39,6 +42,9 @@ export default {
     },
 
     methods:{
+        goback(){
+            this.$router.push({name:"Product"});
+        },
         async addProduct() {
             const result = await axios.post("https://men5.azurewebsites.net/api/Product", {
                 product_name:this.product.product_name,

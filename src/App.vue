@@ -17,17 +17,46 @@
   color: #2c3e50;
 }
 
+.content{
+  width: 100%;
+}
 
 body{
   padding: 0;
   margin: 0;
 }
 
+.bodyInsideApp{
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
 .logo{
   width: 100px;
 }
 
-.register input, .addInput, .updateInput{
+.register input{
+  width: 300px;
+  height: 40px;
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  border:1px solid skyblue;
+}
+
+.register button{
+  width: 326px;
+  height: 50px;
+  border: 1px solid skyblue;
+  background: skyblue;
+  color: white;
+  cursor: pointer;
+}
+
+.addInput, .updateInput, .backBtn{
   width: 300px;
   height: 30px;
   display: block;
@@ -38,8 +67,8 @@ body{
   border:1px solid skyblue;
 }
 
-.register button, .addInputBtn, .updateInputBtn{
-  width: 320px;
+.addInputBtn, .updateInputBtn, .backBtn{
+  width: 326px;
   height: 40px;
   border: 1px solid skyblue;
   background: skyblue;
@@ -47,15 +76,27 @@ body{
   cursor: pointer;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
 
-
-thead{
+th {
   background-color: antiquewhite;
 }
 
-tbody{
-  background-color: azure;
+th, td {
+  text-align: left;
+  padding: 3px;
+  text-align: center;
+  border: 0.5px solid;
 }
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover {
+  background-color: yellow;
+}
+.pointer {cursor: pointer;}
 
 .addBtn{
   background-color: #52BE80;
@@ -64,27 +105,23 @@ tbody{
   background-color: #EC7063;
 }
 .updateBtn{
-  background-color: #5DADE2;
+  background-color: skyblue;
+}
+.backBtn{
+  background-color: #483D8B;
+  color: white;
 }
 
 button{
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
 }
 
 .updateBtn, .deleteBtn, .addBtn{
-  font-size: 30px;
+  font-size: 15px;
   font-weight: bold;
-  color: whitesmoke
-}
-
-tr{
-
-}
-
-td{
-  padding: 10px;
-  width: 100px;
+  color: whitesmoke;
+  padding: 0;
 }
 
 

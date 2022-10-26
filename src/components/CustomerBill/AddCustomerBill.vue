@@ -2,6 +2,9 @@
     <Header/>
     <h1>Kunden Rechung hinzufügen</h1>
     <form>
+        <button class="backBtn" type="button" v-on:click="goback()">
+            Zurück
+        </button>
         <input class="addInput" type="text" name="Firma" placeholder="Firma" v-model="customerBill.company_name"/>
         <input class="addInput" type="text" name="Ansprechsperson" placeholder="Ansprechsperson" v-model="customerBill.customer_name"/>
         <input class="addInput" type="text" name="Strasse" placeholder="Strasse" v-model="customerBill.customer_street"/>
@@ -41,6 +44,9 @@ export default {
     },
 
     methods:{
+        goback(){
+            this.$router.push({name:"CustomerBill"});
+        },
         async addCustomerBill() {
             const result = await axios.post("https://men5.azurewebsites.net/api/CustomerBill", {
                 company_name:this.customerBill.company_name,

@@ -2,6 +2,9 @@
     <Header/>
     <h1>Kontakt hinzufügen</h1>
     <form>
+        <button class="backBtn" type="button" v-on:click="goback()">
+            Zurück
+        </button>
         <input class="addInput" type="text" name="lastname" placeholder="Nachname" v-model="customer.lastname"/>
         <input class="addInput" type="text" name="surname" placeholder="Vorname" v-model="customer.surname"/>
         <input class="addInput" type="text" name="dob" placeholder="Geburtsdatum" v-model="customer.dob"/>
@@ -46,6 +49,9 @@ export default {
     },
 
     methods:{
+        goback(){
+            this.$router.push({name:"Customer"});
+        },
         async addCustomer() {
             const result = await axios.post("https://men5.azurewebsites.net/api/Customer", {
                 surname:this.customer.surname,

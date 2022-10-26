@@ -2,6 +2,9 @@
     <Header/>
     <h1>Kunden Rechung bearbeiten</h1>
     <form>
+        <button class="backBtn" type="button" v-on:click="goback()">
+            Zurück
+        </button>
         <input class="updateInput" type="text" name="Firma" placeholder="Firma" v-model="customerBill.company_name"/>
         <input class="updateInput" type="text" name="Ansprechsperson" placeholder="Ansprechsperson" v-model="customerBill.customer_name"/>
         <input class="updateInput" type="text" name="Strasse" placeholder="Strasse" v-model="customerBill.customer_street"/>
@@ -17,13 +20,9 @@
 </template>
 
 <script>
-import Header from '../Header.vue';
 import axios from "axios";
 export default {   
     name:'UpdateCustomerBill',
-    components:{
-        Header
-    },
     data() {
         return {
             customerBill:{
@@ -41,6 +40,9 @@ export default {
     },
 
     methods:{
+        goback(){
+            this.$router.push({name:"CustomerBill"});
+        },
         async updateCustomerBill(){
             const result = await axios.put("https://men5.azurewebsites.net/api/CustomerBill/",{
             //const result = await axios.put("http://localhost:49146/api/Customer",{
@@ -53,6 +55,7 @@ export default {
                 issued_on:this.customerBill.issued_on,
                 deadline:this.customerBill.deadline
             });
+            
             if(result.status == 200){
                 this.$router.push({name:"CustomerBill"});
             } else {
@@ -71,7 +74,7 @@ export default {
         this.name = array[2].slice(1, -2);
 
         const result = await axios.get("https://men5.azurewebsites.net/api/CustomerBill/"+this.$route.params.id);
-        this.product = result.data;
+        this.customerBill = result.data;
     }
 }
 

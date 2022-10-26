@@ -1,7 +1,9 @@
 <template>
-    <Header/>
     <h1>Kontakt bearbeiten</h1>
     <form>
+        <button class="backBtn" type="button" v-on:click="goback()">
+            Zurück
+        </button>
         <input class="updateInput" type="text" name="lastname" placeholder="Nachname" v-model="customer.lastname"/>
         <input class="updateInput" type="text" name="surname" placeholder="Vorname" v-model="customer.surname"/>
         <input class="updateInput" type="text" name="dob" placeholder="Geburtsdatum" v-model="customer.dob"/>
@@ -20,13 +22,10 @@
 </template>
 
 <script>
-import Header from '../Header.vue';
 import axios from "axios";
 export default {   
     name:'UpdateCustomer',
-    components:{
-        Header
-    },
+
     data() {
         return {
             customer:{
@@ -46,6 +45,9 @@ export default {
     },
 
     methods:{
+        goback(){
+            this.$router.push({name:"Customer"});
+        },
         async updateCustomer(){
             const result = await axios.put("https://men5.azurewebsites.net/api/Customer/",{
             //const result = await axios.put("http://localhost:49146/api/Customer",{

@@ -2,6 +2,9 @@
     <Header/>
     <h1>Produkt bearbeiten</h1>
     <form>
+        <button class="backBtn" type="button" v-on:click="goback()">
+            Zurück
+        </button>
         <input class="updateInput" type="text" name="Produkt" placeholder="Produkt" v-model="product.product_name"/>
         <input class="updateInput" type="text" name="Dimension" placeholder="Dimension" v-model="product.product_size"/>
         <input class="updateInput" type="text" name="Beschreibung" placeholder="Beschreibung" v-model="product.description"/>
@@ -16,13 +19,9 @@
 </template>
 
 <script>
-import Header from '../Header.vue';
 import axios from "axios";
 export default {   
     name:'UpdateProduct',
-    components:{
-        Header
-    },
     data() {
         return {
             product:{
@@ -39,6 +38,9 @@ export default {
     },
 
     methods:{
+        goback(){
+            this.$router.push({name:"Product"});
+        },
         async updateProduct(){
             const result = await axios.put("https://men5.azurewebsites.net/api/Product/",{
             //const result = await axios.put("http://localhost:49146/api/Customer",{
@@ -50,6 +52,7 @@ export default {
                 purchasing_price_per_unit:this.product.purchasing_price_per_unit,
                 selling_price_per_unit:this.product.selling_price_per_unit,
             });
+            console.log(result);
             if(result.status == 200){
                 this.$router.push({name:"Product"});
             } else {
@@ -61,7 +64,7 @@ export default {
 
     async mounted() {
         let user = localStorage.getItem("user-info");
-        if(!user) {
+        if(!user|| user == null) {
             this.$router.push({name:'SignUp'});
         }
         let array = user.toString().split(",");

@@ -1,8 +1,8 @@
 <template>
 <Header/>
 <h1>Kunden Rechnungen</h1>
-<body>
-    <thead id="cthead">
+<body class="bodyInsideApp">
+    <table>
         <tr>
             <th> 
                 <router-link class="addBtn" type="button" to="addCustomerBill">
@@ -39,9 +39,7 @@
                 Fällig
             </th>
         </tr>
-    </thead>
-    <tbody border = "1">
-        <tr v-for = "cbill in customerBill" :key="cbill.customer_bill_nr">
+        <tr v-for = "cbill in customerBill" :key="cbill.customer_bill_nr" class="pointer">
             <td>
                 <router-link type="button" class="updateBtn" :to="'/updateCustomerBill/'+cbill.customer_bill_nr">
                     <button class="updateBtn">
@@ -62,7 +60,7 @@
                 </button>
             </td>
         </tr>
-    </tbody>
+    </table>
 </body>
 </template>
 
