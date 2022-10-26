@@ -17,10 +17,6 @@
   color: #2c3e50;
 }
 
-.content{
-  width: 100%;
-}
-
 body{
   padding: 0;
   margin: 0;
@@ -88,8 +84,8 @@ th {
 
 th, td {
   text-align: left;
-  padding: 3px;
-  text-align: center;
+  padding: 4px;
+  width: auto;
   border: 0.5px solid;
 }
 tr:nth-child(even){background-color: #f2f2f2}
@@ -112,9 +108,13 @@ tr:hover {
   color: white;
 }
 
-button{
-  width: 20px;
-  height: 20px;
+.tableBtn{
+  width: 25px;
+  height: 25px;
+}
+
+.tableBtn:hover{
+  transform: scale(1.2);
 }
 
 .updateBtn, .deleteBtn, .addBtn{
@@ -123,6 +123,4 @@ button{
   color: whitesmoke;
   padding: 0;
 }
-
-
 </style>
