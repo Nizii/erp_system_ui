@@ -38,6 +38,9 @@
             <th>
                 Fällig
             </th>
+            <th>
+                Löschen
+            </th>
         </tr>
         <tr v-for = "cbill in customerBill" :key="cbill.customer_bill_nr" class="pointer">
             <td>
@@ -46,7 +49,8 @@
                         B
                     </button>
                 </router-link>
-            </td> 
+            </td>
+            <td>{{cbill.customer_bill_nr}}</td>
             <td>{{cbill.company_name}}</td>
             <td>{{cbill.customer_name}}</td>
             <td>{{cbill.customer_street}}</td>
