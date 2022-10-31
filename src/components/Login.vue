@@ -23,17 +23,17 @@
         },
         methods: {
             async login() {
-                await axios.get("https://men5.azurewebsites.net/api/user?user_name="+this.user_name+"&user_password="+this.user_password)
+                //await axios.get("https://men5.azurewebsites.net/api/user?user_name="+this.user_name+"&user_password="+this.user_password)
                 //let result = axios.post(variables.API_URL + "user",{
                 //let result = axios.post("http://localhost:49146/api/User",{
                 //"http://localhost:49146/api/User", {
+                await axios.get("http://localhost:49146/api/authentication/"+this.user_name+"/"+this.user_password)
                 .then(resp => {
-                        if(resp.status == 200 && resp.data[1] != null && resp.data[2] != null) {
-                            alert(resp.data[0]);
+                        if(resp.status == 200 && resp.data[1] != null && resp.data != null) {
                             localStorage.setItem("user-info", JSON.stringify(resp.data));
                             this.$router.push({name:'Home'});
                         } else {
-                            alert(resp.data[0]);
+                            alert("Login failed " + resp.data);
                         }
                     })
                 .catch(function (error) {

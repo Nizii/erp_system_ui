@@ -22,13 +22,11 @@ export default {
         }
     },
     mounted() {
-        let user = localStorage.getItem("user-info");
-        if(!user || user == null) {
+        let token = localStorage.getItem("user-info");
+        if(!token) {
             this.$router.push({name:'SignUp'});
         } 
-        console.log(user);
-        let array = user.toString().split(",");
-        this.name = array[2].slice(1, -2);
+        console.log("Token in Header " + token);
     }
 }
 </script>

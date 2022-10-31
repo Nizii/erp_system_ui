@@ -17,12 +17,10 @@ export default {
         Header
     },
     mounted() {
-        let user = localStorage.getItem("user-info");
-        if(!user) {
+        let token = localStorage.getItem("user-info");
+        if(!token) {
             this.$router.push({name:'SignUp'});
         }
-        let array = user.toString().split(",");
-        this.name = array[2].slice(1, -2);
     }
 }
 </script>
