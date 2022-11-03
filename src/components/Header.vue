@@ -26,7 +26,7 @@ export default {
         if(!token) {
             this.$router.push({name:'SignUp'});
         } 
-        console.log("Token in Header " + token);
+        console.log("Header " + token);
     }
 }
 </script>

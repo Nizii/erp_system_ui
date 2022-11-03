@@ -186,19 +186,22 @@ export default {
     methods:{
         async deleteCustomer(id){
             //let result = await axios.delete('https://men5.azurewebsites.net/api/Customer/'+id);
-            let result = await axios.delete('https://men5.azurewebsites.net/api/Customer/'+id);
+            let token = localStorage.getItem("user-info");
+            let result = await axios.delete('http://localhost:49146/api/Customer/'+id, {headers: {"AuthToken" : token}});
             if(result.status==200){
                 this.loadData();
+            } else {
+                console.log(result.data);
             }
         },
 
         async loadData(){
         let token = localStorage.getItem("user-info");
+        console.log("Customer "+token);
         if(!token) {
             this.$router.push({name:'SignUp'});
         }
         let result = await axios.get("http://localhost:49146/api/customer", {headers: {"AuthToken" : token}});
-        console.log(result.data);
         this.customer = result.data;
         }
     },

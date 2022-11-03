@@ -1,21 +1,33 @@
 <template>
     <Header/>
-    <h1>Kontakt hinzufügen</h1>
     <form>
         <button class="backBtn" type="button" v-on:click="goback()">
-            Zurück
+             Abbrechen
         </button>
-        <input class="addInput" type="text" name="lastname" placeholder="Nachname" v-model="customer.lastname"/>
-        <input class="addInput" type="text" name="surname" placeholder="Vorname" v-model="customer.surname"/>
-        <input class="addInput" type="text" name="dob" placeholder="Geburtsdatum" v-model="customer.dob"/>
-        <input class="addInput" type="text" name="street" placeholder="Strasse" v-model="customer.street"/>
-        <input class="addInput" type="text" name="nr" placeholder="Hausnummer" v-model="customer.nr"/>
-        <input class="addInput" type="text" name="postcode" placeholder="PLZ" v-model="customer.postcode"/>
-        <input class="addInput" type="text" name="country" placeholder="Land" v-model="customer.country"/>
-        <input class="addInput" type="text" name="cellphone" placeholder="Mobile" v-model="customer.cellphone"/>
-        <input class="addInput" type="text" name="landlinephone" placeholder="Festnetz" v-model="customer.landlinephone"/>
-        <input class="addInput" type="text" name="note" placeholder="Notizen" v-model="customer.note"/>
-        <input class="addInput" type="text" name="email" placeholder="Email" v-model="customer.email"/>
+        <div class="inputContent">
+            <p class="inputLabel">Nachname</p>
+            <input class="addInput" type="text" name="lastname" v-model="customer.lastname"/>
+        </div>
+        <p class="inputLabel">Vorname</p>
+        <input class="addInput" type="text" name="surname" v-model="customer.surname"/>
+        <p class="inputLabel">Geburtsdatum</p>
+        <input class="addInput" type="text" name="dob" v-model="customer.dob"/>
+        <p class="inputLabel">Strasse</p>
+        <input class="addInput" type="text" name="street" v-model="customer.street"/>
+        <p class="inputLabel">Hausnummer</p>
+        <input class="addInput" type="text" name="nr" v-model="customer.nr"/>
+        <p class="inputLabel">PLZ</p>
+        <input class="addInput" type="text" name="postcode" v-model="customer.postcode"/>
+        <p class="inputLabel">Land</p>
+        <input class="addInput" type="text" name="country" v-model="customer.country"/>
+        <p class="inputLabel">Mobile</p>
+        <input class="addInput" type="text" name="cellphone" v-model="customer.cellphone"/>
+        <p class="inputLabel">Festnetz</p>
+        <input class="addInput" type="text" name="landlinephone" v-model="customer.landlinephone"/>
+        <p class="inputLabel">Notizen</p>
+        <input class="addInput" type="text" name="note" v-model="customer.note"/>
+        <p class="inputLabel">Email</p>
+        <input class="addInput" type="text" name="email" v-model="customer.email"/>
         <button class="addInputBtn" type="button" v-on:click="addCustomer()">
             Neu hinzufügen
         </button>
@@ -53,7 +65,9 @@ export default {
             this.$router.push({name:"Customer"});
         },
         async addCustomer() {
-            const result = await axios.post("https://men5.azurewebsites.net/api/Customer", {
+            let token = localStorage.getItem("user-info");
+            console.log("Func AddCus " +token);
+            const result = await axios.post("http://localhost:49146/api/Customer", {
                 surname:this.customer.surname,
                 lastname:this.customer.lastname,
                 dob:this.customer.dob,
@@ -65,7 +79,11 @@ export default {
                 landlinephone:this.customer.landlinephone,
                 email:this.customer.email,
                 note:this.customer.note
+            }, 
+            {
+                headers: {"AuthToken" : token}
             });
+
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"Customer"});
             } else {
@@ -75,12 +93,11 @@ export default {
     },
 
     mounted() {
-        let user = localStorage.getItem("user-info");
-        if(!user) {
+        let token = localStorage.getItem("user-info");
+        console.log("Add " + token);
+        if(!token) {
             this.$router.push({name:"SignUp"});
         }
-        let array = user.toString().split(",");
-        this.name = array[2].slice(1, -2);
     }
 }
 

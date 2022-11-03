@@ -54,10 +54,9 @@ body{
 
 .addInput, .updateInput, .backBtn{
   width: 300px;
-  height: 30px;
+  height: 20px;
   display: block;
   padding-left: 20px;
-  margin-bottom: 10px;
   margin-right: auto;
   margin-left: auto;
   border:1px solid skyblue;
@@ -65,11 +64,26 @@ body{
 
 .addInputBtn, .updateInputBtn, .backBtn{
   width: 326px;
-  height: 40px;
+  height: 30px;
   border: 1px solid skyblue;
   background: skyblue;
   color: white;
   cursor: pointer;
+}
+
+form{
+  
+  
+}
+
+.inputContent{
+  
+}
+
+.inputLabel{
+  
+  padding: 0;
+  margin: 0;
 }
 
 table {
@@ -90,7 +104,7 @@ th, td {
 }
 tr:nth-child(even){background-color: #f2f2f2}
 tr:hover {
-  background-color: yellow;
+  background-color: rgb(199, 199, 199);
 }
 .pointer {cursor: pointer;}
 
