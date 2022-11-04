@@ -52,6 +52,7 @@ body{
   cursor: pointer;
 }
 
+/*
 .addInput, .updateInput, .backBtn{
   width: 300px;
   height: 20px;
@@ -61,29 +62,80 @@ body{
   margin-left: auto;
   border:1px solid skyblue;
 }
-
+*/
 .addInputBtn, .updateInputBtn, .backBtn{
-  width: 326px;
-  height: 30px;
-  border: 1px solid skyblue;
-  background: skyblue;
+  width: 135px;
+  height: 40px;
   color: white;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.addInputBtn, .updateInputBtn{
+  background-color: rgb(64, 147, 180);
+}
+.addInputBtn:hover{
+  background-color: rgb(199, 199, 199);
+  color:black;
+}
+
+.backBtn:hover {
+  background-color: rgb(199, 199, 199);
+  color:black;
+}
+
+.updateInputBtn:hover{
+  background-color: rgb(199, 199, 199);
+  color:black;
+}
+
+.addBtn{
+  background-color: #52BE80;
+}
+.deleteBtn{
+  background-color: #EC7063;
+}
+.updateBtn{
+  background-color: skyblue;
+}
+.backBtn{
+  background-color: #483D8B;
+  color: white;
 }
 
 form{
+
   
-  
+}
+
+#backBtnContent{
+
+}
+#addBtnContent{
+
 }
 
 .inputContent{
-  
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.inputContent:nth-child(even){background-color: #f2f2f2}
+
+.addInput{
+  height: 30px;
 }
 
 .inputLabel{
+  padding-left: 5px;
+  text-align: left;
+  width: 120px;  
   
-  padding: 0;
-  margin: 0;
 }
 
 table {
@@ -108,19 +160,6 @@ tr:hover {
 }
 .pointer {cursor: pointer;}
 
-.addBtn{
-  background-color: #52BE80;
-}
-.deleteBtn{
-  background-color: #EC7063;
-}
-.updateBtn{
-  background-color: skyblue;
-}
-.backBtn{
-  background-color: #483D8B;
-  color: white;
-}
 
 .tableBtn{
   width: 25px;

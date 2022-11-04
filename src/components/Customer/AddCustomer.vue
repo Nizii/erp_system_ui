@@ -1,36 +1,60 @@
 <template>
     <Header/>
     <form>
-        <button class="backBtn" type="button" v-on:click="goback()">
-             Abbrechen
-        </button>
+        <div id="backBtnContent">
+            <button class="backBtn" type="button" v-on:click="goback()">
+             Zurück zu Kontakte
+            </button>
+        </div>
         <div class="inputContent">
             <p class="inputLabel">Nachname</p>
             <input class="addInput" type="text" name="lastname" v-model="customer.lastname"/>
         </div>
-        <p class="inputLabel">Vorname</p>
-        <input class="addInput" type="text" name="surname" v-model="customer.surname"/>
-        <p class="inputLabel">Geburtsdatum</p>
-        <input class="addInput" type="text" name="dob" v-model="customer.dob"/>
-        <p class="inputLabel">Strasse</p>
-        <input class="addInput" type="text" name="street" v-model="customer.street"/>
-        <p class="inputLabel">Hausnummer</p>
-        <input class="addInput" type="text" name="nr" v-model="customer.nr"/>
-        <p class="inputLabel">PLZ</p>
-        <input class="addInput" type="text" name="postcode" v-model="customer.postcode"/>
-        <p class="inputLabel">Land</p>
-        <input class="addInput" type="text" name="country" v-model="customer.country"/>
-        <p class="inputLabel">Mobile</p>
-        <input class="addInput" type="text" name="cellphone" v-model="customer.cellphone"/>
-        <p class="inputLabel">Festnetz</p>
-        <input class="addInput" type="text" name="landlinephone" v-model="customer.landlinephone"/>
-        <p class="inputLabel">Notizen</p>
-        <input class="addInput" type="text" name="note" v-model="customer.note"/>
-        <p class="inputLabel">Email</p>
-        <input class="addInput" type="text" name="email" v-model="customer.email"/>
-        <button class="addInputBtn" type="button" v-on:click="addCustomer()">
+        <div class="inputContent">
+            <p class="inputLabel">Vorname</p>
+            <input class="addInput" type="text" name="surname" v-model="customer.surname"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Geburtsdatum</p>
+            <input class="addInput" type="text" name="dob" v-model="customer.dob"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Strasse</p>
+            <input class="addInput" type="text" name="street" v-model="customer.street"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Hausnummer</p>
+            <input class="addInput" type="text" name="nr" v-model="customer.nr"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">PLZ</p>
+            <input class="addInput" type="text" name="postcode" v-model="customer.postcode"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Land</p>
+            <input class="addInput" type="text" name="country" v-model="customer.country"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Mobile</p>
+            <input class="addInput" type="text" name="cellphone" v-model="customer.cellphone"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Festnetz</p>
+            <input class="addInput" type="text" name="landlinephone" v-model="customer.landlinephone"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Notizen</p>
+            <input class="addInput" type="text" name="note" v-model="customer.note"/>
+        </div>
+        <div class="inputContent">
+            <p class="inputLabel">Email</p>
+            <input class="addInput" type="text" name="email" v-model="customer.email"/>
+        </div>
+        <div class="addBtnContent">
+            <button class="addInputBtn" type="button" v-on:click="addCustomer()">
             Neu hinzufügen
-        </button>
+            </button>
+        </div>
     </form>
 </template>
 
