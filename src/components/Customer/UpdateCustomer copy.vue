@@ -5,18 +5,6 @@
              Zurück zu Kontakte
             </button>
         </div>
-        <div v-for = "(value, key) in result">
-            <div class="inputContent">
-            <p class="inputLabel" >{{key}}</p>
-            <Input :value=value />
-            </div>
-        </div>
-        <!--
-        <div id="backBtnContent">
-            <button class="backBtn" type="button" v-on:click="goback()">
-             Zurück zu Kontakte
-            </button>
-        </div>
         <div class="inputContent">
             <p class="inputLabel">Nachname</p>
             <input class="addInput" type="text" name="lastname" v-model="customer.lastname"/>
@@ -61,9 +49,8 @@
             <p class="inputLabel">Email</p>
             <input class="addInput" type="text" name="email" v-model="customer.email"/>
         </div>
-    -->
         <div class="addBtnContent">
-            <button class="addInputBtn" type="button" v-on:click="getResult()">
+            <button class="addInputBtn" type="button" v-on:click="updateCustomer()">
                 Kontakt ändern
             </button>
         </div>
@@ -72,24 +59,31 @@
 
 <script>
 import axios from "axios";
-import Input from "./Input.vue"
 export default {   
     name:'UpdateCustomer',
-    components: {
-        Input,
-    },
+
     data() {
         return {
-            result:{},
+            customer:{
+                customer_nr: "",
+                surname: "",
+                lastname: "",
+                dob: "",
+                street: "",
+                nr: "",
+                postcode: "",
+                country: "",
+                cellphone: "",
+                landlinephone:" ",
+                note: "",
+                email: ""
+            }
         }
     },
 
     methods:{
         goback(){
             this.$router.push({name:"Customer"});
-        },
-        getResult(){
-            console.log(this.result);
         },
         async updateCustomer(){
             let token = localStorage.getItem("user-info");
@@ -123,7 +117,7 @@ export default {
             this.$router.push({name:'SignUp'});
         }
         const result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id, {headers: {"AuthToken" : token}});
-        this.result = result.data;
+        this.customer = result.data;
     }
 }
 

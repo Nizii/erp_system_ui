@@ -123,6 +123,9 @@ form{
   flex-direction: row; 
   justify-content: center; 
   align-items: center;
+  height: 35px;
+  background-color: antiquewhite;
+  
 }
 
 .inputContent:nth-child(even){background-color: #f2f2f2}
