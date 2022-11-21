@@ -1,11 +1,11 @@
 <template>
 <Header/>
-<h1>Produkte</h1>
+<h1>Kunden Rechnungen</h1>
 <body class="bodyInsideApp">
     <table>
         <tr>
             <th> 
-                <router-link class="addBtn" type="button" to="addProduct">
+                <router-link type="button" class="addBtn" :to="{ name: 'InputForm', params: { id: 1, case: 'addCustomerBill' }}" >
                     <div class="tableBtn">
                         <svg class="tableBtn" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
                             <circle fill="#4CAF50" cx="24" cy="24" r="21"/>
@@ -18,36 +18,39 @@
                 </router-link>
             </th>
             <th>
-                Nr
+                Rechungs Nr
             </th>
             <th>
-                Artikel
+                Firma
             </th>
             <th>
-                Grösse
+                Ansprechsperson
             </th>
             <th>
-                Beschreibung
+                Strasse
             </th>
             <th>
-                Verfügbar
+                PLZ
             </th>
             <th>
-                Einheit
+                Betrag
             </th>
             <th>
-                EK
+                Währung
             </th>
             <th>
-                Verkauf
+                Ausgestellt
             </th>
             <th>
-
+                Fällig
+            </th>
+            <th>
+      
             </th>
         </tr>
-        <tr v-for = "pro in products" :key="pro.product_nr" class="pointer">
+        <tr v-for = "cbill in customerBill" :key="cbill.customer_bill_nr" class="pointer">
             <td>
-                <router-link type="button" class="updateBtn" :to="'/updateProduct/'+pro.product_nr">
+                <router-link type="button" :to="{ name: 'InputForm', params: { id: cus.customer_bill_nr, case: 'updateCustomerBill' }}" >
                     <div class="tableBtn">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -119,15 +122,16 @@
                         </svg>         
                     </div>
                 </router-link>
-            </td> 
-            <td>{{pro.product_nr}}</td>
-            <td>{{pro.product_name}}</td>
-            <td>{{pro.product_size}}</td>
-            <td>{{pro.description}}</td>
-            <td>{{pro.units_available}}</td>
-            <td>{{pro.unit}}</td>
-            <td>{{pro.purchasing_price_per_unit}}</td>
-            <td>{{pro.selling_price_per_unit}}</td>
+            </td>
+            <td>{{cbill.customer_bill_nr}}</td>
+            <td>{{cbill.company_name}}</td>
+            <td>{{cbill.contact_person}}</td>
+            <td>{{cbill.customer_street}}</td>
+            <td>{{cbill.customer_postcode}}</td>
+            <td>{{cbill.amount}}</td>
+            <td>{{cbill.currency}}</td>
+            <td>{{cbill.issued_on}}</td>
+            <td>{{cbill.deadline}}</td>
             <td>
                 <div class="tableBtn" v-on:click="deleteCustomer(cus.customer_nr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -146,38 +150,39 @@
 </template>
 
 <script>
-import Header from '../Header.vue';
+import Header from './Header.vue';
 import axios from 'axios';
 export default {
     name:'Home',
     data() {
         return {
-            products:[],
-            product_nr: "",
-            product_name: "",
-            product_size: "",
-            description: "",
-            units_available: "",
-            unit: "",
-            purchasing_price_per_unit: "",
-            selling_price_per_unit: "",
+            customerBill:[],
+            company_name: "",
+            contact_person: "",
+            customer_street: "",
+            customer_postcode: "",
+            amount: "",
+            currency: "",
+            issued_on: "",
+            deadline: ""
         }
     },
 
     methods:{
-        async deleteProduct(id){
-            let result = await axios.delete('https://men5.azurewebsites.net/api/Product/'+id);
+        async deleteCustomerBill(id){
+            let token = localStorage.getItem("user-info");
+            let result = await axios.delete('http://localhost:49146/api/CustomerBill/'+id, {headers: {"AuthToken" : token}});
             if(result.status==200){
                 this.loadData();
             }
         },
         async loadData(){
-        let user = localStorage.getItem("user-info");
-        if(!user) {
+        let token = localStorage.getItem("user-info");
+        if(!token) {
             this.$router.push({name:'SignUp'});
         }
-        let result = await axios.get('https://men5.azurewebsites.net/api/Product');
-        this.products = result.data;
+        let result = await axios.get("http://localhost:49146/api/CustomerBill", {headers: {"AuthToken" : token}});
+        this.customerBill = result.data;
         }
     },
 

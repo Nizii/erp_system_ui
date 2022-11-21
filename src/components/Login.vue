@@ -11,7 +11,8 @@
 </template>
 
 <script>
-    import axios from "axios"
+    import axios from "axios";
+    axios.defaults.AccessControlAllowCredentials = true;
     export default {
         name: "Login",
         data() {
@@ -27,9 +28,13 @@
                 //let result = axios.post(variables.API_URL + "user",{
                 //let result = axios.post("http://localhost:49146/api/User",{
                 //"http://localhost:49146/api/User", {
-                await axios.get("http://localhost:49146/api/authentication/"+this.user_name+"/"+this.user_password)
+                //await axios.get("http://localhost:49146/api/authentication/"+this.user_name+"/"+this.user_password)
+                await axios.get("http://localhost:49146/api/"+this.user_name+"/"+this.user_password)
                 .then(resp => {
-                        if(resp.status == 200 && resp.data[1] != null && resp.data != null) {
+                        if(resp.status == 200 && resp.data != null) {
+                            alert("Session User "+resp.data);
+                            console.log("Login response data " + resp.data);
+                            console.log("Login response state " + resp.status);
                             localStorage.setItem("user-info", JSON.stringify(resp.data));
                             this.$router.push({name:'Home'});
                         } else {

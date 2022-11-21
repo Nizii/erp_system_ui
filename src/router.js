@@ -1,18 +1,11 @@
 import Home from'./components/Home.vue'
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
+import Customer from './components/Customer'
+import InputForm from './components/InputForm'
+import Product from './components/Product'
+import CustomerBill from './components/CustomerBill'
 
-import Customer from './components/Customer/Customer'
-import AddCustomer from './components/Customer/AddCustomer'
-import UpdateCustomer from './components/Customer/UpdateCustomer'
-
-import Product from './components/Product/Product'
-import AddProduct from './components/Product/AddProduct'
-import UpdateProduct from './components/Product/UpdateProduct'
-
-import CustomerBill from './components/CustomerBill/CustomerBill'
-import AddCustomerBill from './components/CustomerBill/AddCustomerBill'
-import UpdateCustomerBill from './components/CustomerBill/UpdateCustomerBill'
 
 import { createRouter, createWebHistory} from 'vue-router'
 
@@ -38,14 +31,9 @@ const routes = [
         path:'/customer'
     },
     {
-        name:'AddCustomer',
-        component:AddCustomer,
-        path:'/addCustomer'
-    },
-    {
-        name:'UpdateCustomer',
-        component:UpdateCustomer,
-        path:'/updateCustomer/:id'
+        name:'InputForm',
+        component:InputForm,
+        path:'/inputForm/:id/', name:'InputForm', component:InputForm, probs: true
     },
     {
         name:'Product',
@@ -53,31 +41,10 @@ const routes = [
         path:'/product'
     },
     {
-        name:'AddProduct',
-        component:AddProduct,
-        path:'/addProduct'
-    },
-    {
-        name:'UpdateProduct',
-        component:UpdateProduct,
-        path:'/updateProduct/:id'
-    },
-    {
         name:'CustomerBill',
         component:CustomerBill,
         path:'/customerBill'
-    },
-    {
-        name:'AddCustomerBill',
-        component:AddCustomerBill,
-        path:'/addCustomerBill'
-    },
-    {
-        name:'UpdateCustomerBill',
-        component:UpdateCustomerBill,
-        path:'/updateCustomerBill/:id'
     }
-
 ];
 
 const router = createRouter({

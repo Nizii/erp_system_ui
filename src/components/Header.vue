@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name:"Header",
     data() {
@@ -16,8 +17,9 @@ export default {
         }
     },
     methods:{
-        logout(){
-            localStorage.clear();
+        async logout(){
+            //localStorage.clear();
+            await axios.get("http://localhost:49146/api/clear")
             this.$router.push({name:"Login"})
         }
     },
@@ -26,7 +28,7 @@ export default {
         if(!token) {
             this.$router.push({name:'SignUp'});
         } 
-        console.log("Header " + token);
+        console.log("Session " + token);
     }
 }
 </script>

@@ -5,7 +5,7 @@
     <table border = "1">
         <tr>
             <th> 
-                <router-link type="button" to="addCustomer">
+                <router-link type="button" :to="{ name: 'InputForm', params: { id: 1, case: 'addCustomer' }}" >
                     <div class="tableBtn">
                         <svg class="tableBtn" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
                             <circle fill="#4CAF50" cx="24" cy="24" r="21"/>
@@ -19,6 +19,9 @@
             </th>
             <th>
                 Kunden Nr
+            </th>
+            <th>
+                Firma
             </th>
             <th>
                 Vorname
@@ -59,7 +62,8 @@
         </tr>
         <tr v-for = "cus in customer" :key="cus.customer_nr" class="pointer">
             <td>
-                <router-link type="button" :to="'/updateCustomer/'+cus.customer_nr">
+                <!--<router-link type="button" :to="'/updateCustomer/'+cus.customer_nr">-->
+                <router-link type="button" :to="{ name: 'InputForm', params: { id: 1, case: 'updateCustomer' }}" >
                     <div class="tableBtn">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -133,6 +137,7 @@
                 </router-link>
             </td> 
             <td>{{cus.customer_nr}}</td>
+            <td>{{cus.company_name}}</td>
             <td>{{cus.lastname}}</td>
             <td>{{cus.surname}}</td>
             <td>{{cus.dob}}</td>
@@ -162,13 +167,15 @@
 </template>
 
 <script>
-import Header from '../Header.vue';
+import Header from './Header.vue';
 import axios from 'axios';
+axios.defaults.AccessControlAllowCredentials = true;
 export default {
     name:'Home',
     data() {
         return {
             customer:[],
+            company_name: "",
             surname: "",
             lastname: "",
             dob: "",
@@ -197,12 +204,30 @@ export default {
 
         async loadData(){
         let token = localStorage.getItem("user-info");
-        console.log("Customer "+token);
+        console.log("Session "+token);
         if(!token) {
             this.$router.push({name:'SignUp'});
         }
-        let result = await axios.get("http://localhost:49146/api/customer", {headers: {"AuthToken" : token}});
-        this.customer = result.data;
+        await axios.get("http://localhost:49146/api/Customer")
+        .then(function (response) {
+            console.log("Response data " + response.data);
+            console.log("Status " + response.status);
+            console.log("Status Text " + response.statusText);
+            console.log("Header data " + response.headers);
+            console.log("Config data " + response.config);
+        });
+
+        //console.log("Result " + result.data);
+        /*
+        if(!result.data){
+            console.log(result.data);
+            console.log(result);
+            localStorage.clear();
+            await axios.get("http://localhost:49146/session/clear")
+            this.$router.push({name:"Login"})
+        }
+        */
+        //this.customer = result.data;
         }
     },
 
