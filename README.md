@@ -4,7 +4,7 @@ This project was about creating a full stack application from design to the impl
 For more details about the backend see my other repository on this project [https://github.com/Nizii/erp_system_api](https://github.com/Nizii/)
 
 # Team
-*Me
+* Me
 
 # Technologies
 ### Languages
@@ -47,7 +47,7 @@ In order to make the work realistic, I was able to do the project on the basis o
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Mood.PNG)
 
 # Funktionsanforderungen
-![alt text](https://github.com/Nizii/ui/blob/master/src/assets/RK.PNG)
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Rk.PNG)
 
 
 ## Project setup
