@@ -12,7 +12,7 @@
 
 <script>
     import axios from "axios";
-    axios.defaults.AccessControlAllowCredentials = true;
+    //axios.defaults.withCredentials = true;
     export default {
         name: "Login",
         data() {

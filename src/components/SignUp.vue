@@ -25,15 +25,14 @@
         async signUp() {
             //await axios.post("https://men5.azurewebsites.net/api/user?user_name="+this.user_name+"&user_email="+this.user_email+"&user_password="+this.user_password)
                 //let result = axios.post(variables.API_URL + "user",{
-            axios.post("http://localhost:49146/api/signup?user_name="+this.user_name+"&user_password="+this.user_password)
+            axios.post("http://localhost:49146/api/"+this.user_name+"/"+this.user_password)
             .then(resp =>{
                 if(resp.status == 200 && resp.data != null) {
-                    alert("Session User "+resp.data);
+                    alert("Session User " + resp.data);
                     localStorage.setItem("user-info", JSON.stringify(resp.data));
                     this.$router.push({name:'Home'});
-                } 
-                else {
-                    alert(resp.data[0]);
+                } else {
+                    alert("User already exists");
                 }
             }).catch(function (error) {
                 if (error.response) {

@@ -48,9 +48,9 @@
       
             </th>
         </tr>
-        <tr v-for = "cbill in customerBill" :key="cbill.customer_bill_nr" class="pointer">
+        <tr v-for = "cbill in customerBill" :key="cbill.CustomerBillNr" class="pointer">
             <td>
-                <router-link type="button" :to="{ name: 'InputForm', params: { id: cus.customer_bill_nr, case: 'updateCustomerBill' }}" >
+                <router-link type="button" :to="{ name: 'InputForm', params: { id: cbill.CustomerBillNr, case: 'updateCustomerBill' }}" >
                     <div class="tableBtn">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -123,17 +123,17 @@
                     </div>
                 </router-link>
             </td>
-            <td>{{cbill.customer_bill_nr}}</td>
-            <td>{{cbill.company_name}}</td>
-            <td>{{cbill.contact_person}}</td>
-            <td>{{cbill.customer_street}}</td>
-            <td>{{cbill.customer_postcode}}</td>
-            <td>{{cbill.amount}}</td>
-            <td>{{cbill.currency}}</td>
-            <td>{{cbill.issued_on}}</td>
-            <td>{{cbill.deadline}}</td>
+            <td>{{cbill.CustomerBillNr}}</td>
+            <td>{{cbill.CompanyName}}</td>
+            <td>{{cbill.ContactPerson}}</td>
+            <td>{{cbill.CustomerStreet}}</td>
+            <td>{{cbill.CustomerPostcode}}</td>
+            <td>{{cbill.Amount}}</td>
+            <td>{{cbill.Currency}}</td>
+            <td>{{cbill.IssuedOn}}</td>
+            <td>{{cbill.Deadline}}</td>
             <td>
-                <div class="tableBtn" v-on:click="deleteCustomer(cus.customer_nr)" type="button">
+                <div class="tableBtn" v-on:click="deleteCustomer(cus.CustomerBillNr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
                         <g transform="translate(0 -1028.4)">
                          <path d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z" transform="translate(0 1029.4)" fill="#c0392b"/>
@@ -157,14 +157,14 @@ export default {
     data() {
         return {
             customerBill:[],
-            company_name: "",
-            contact_person: "",
-            customer_street: "",
-            customer_postcode: "",
-            amount: "",
-            currency: "",
-            issued_on: "",
-            deadline: ""
+            CompanyName: "",
+            ContactPerson: "",
+            CustomerStreet: "",
+            CustomerPostcode: "",
+            Amount: "",
+            Currency: "",
+            IssuedOn: "",
+            Deadline: ""
         }
     },
 

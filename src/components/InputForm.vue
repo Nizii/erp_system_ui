@@ -6,7 +6,7 @@
              Zurück
             </button>
         </div>
-        <div v-for = "(value, key) in result" :key="value.value">
+        <div v-for = "(value, key) in result[0]" :key="value.value">
             <div class="inputContent">
             <p class="inputLabel" >{{key}}</p>
             <Input :value=value />
@@ -33,19 +33,19 @@ export default {
     },
     data() {
         return {
-            result:{},
-            company_name: "",
-            surname: "",
-            lastname: "",
-            dob: "",
-            street: "",
-            nr: "",
-            postcode: "",
-            country: "",
-            cellphone: "",
-            landlinephone:" ",
-            note: "",
-            email: ""
+            result:[],
+            CompanyName: "",
+            Surname: "",
+            Lastname: "",
+            Dob: "",
+            Street: "",
+            Nr: "",
+            Postcode: "",
+            Country: "",
+            Cellphone: "",
+            Landlinephone:" ",
+            Note: "",
+            Email: ""
         }
     },
 
@@ -60,18 +60,18 @@ export default {
             let token = localStorage.getItem("user-info");
             console.log("Func AddCus " +token);
             const result = await axios.post("http://localhost:49146/api/Customer", {
-                company_name:this.customer.company_name,
-                surname:this.customer.surname,
-                lastname:this.customer.lastname,
-                dob:this.customer.dob,
-                street:this.customer.street,
-                nr:this.customer.nr,
-                postcode:this.customer.postcode,
-                country:this.customer.country,
-                cellphone:this.customer.cellphone,
-                landlinephone:this.customer.landlinephone,
-                email:this.customer.email,
-                note:this.customer.note
+                CompanyName:this.customer.CompanyName,
+                Surname:this.customer.Surname,
+                Lastname:this.customer.Lastname,
+                Dob:this.customer.Dob,
+                Street:this.customer.Street,
+                Nr:this.customer.Nr,
+                Postcode:this.customer.Postcode,
+                Country:this.customer.Country,
+                Cellphone:this.customer.Cellphone,
+                Landlinephone:this.customer.Landlinephone,
+                Email:this.customer.Email,
+                Note:this.customer.Note
             }, 
             {
                 headers: {"AuthToken" : token}
@@ -117,24 +117,23 @@ export default {
         console.log("Case "+ this.$route.params.case);
         switch(this.$route.params.case) {
                 case "updateCustomer":
-                    var result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                    var result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
                     this.result = result.data;
-                    console.log("Result "+result);
                 break;
                 case "addCustomer":
-                    var result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                    var result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
                     this.result = result.data;
                 break;
                 case "updateCustomerBill":
-                var result = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                var result = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id);
                     this.result = result.data;
                 break;
                 case "addCustomerBill":
-                var result = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                var result = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id);
                     this.result = result.data;
                 break;
                 case "updateProduct":
-                var result = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                var result = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id);
                     this.result = result.data;
                 break;
                 case "addProduct":
