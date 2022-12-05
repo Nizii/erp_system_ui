@@ -1,4 +1,7 @@
-# ui
+# ERP System UI
+
+# Architecture Diagram
+![alt text](https://github.com/Nizii/pong/blob/main/imgs/architecture.PNG)
 
 ## Project setup
 ```
