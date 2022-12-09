@@ -175,6 +175,7 @@ export default {
     data() {
         return {
             customer:[],
+            CustomerNr:"",
             CompanyName: "",
             Surname: "",
             Lastname: "",
@@ -193,9 +194,10 @@ export default {
     methods:{
         async deleteCustomer(id){
             //let result = await axios.delete('https://men5.azurewebsites.net/api/Customer/'+id);
-            let result = await axios.delete('http://localhost:49146/api/Customer/'+id);
+            let result = await axios.delete('http://localhost:49146/api/customer/'+id);
             if(result.status==200){
                 this.loadData();
+                console.log(result.data);
             } else {
                 console.log(result.data);
             }

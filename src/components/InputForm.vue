@@ -34,18 +34,6 @@ export default {
     data() {
         return {
             result:[],
-            CompanyName: "",
-            Surname: "",
-            Lastname: "",
-            Dob: "",
-            Street: "",
-            Nr: "",
-            Postcode: "",
-            Country: "",
-            Cellphone: "",
-            Landlinephone:" ",
-            Note: "",
-            Email: ""
         }
     },
 
@@ -57,26 +45,20 @@ export default {
             console.log(this.result);
         },
         async addCustomer() {
-            let token = localStorage.getItem("user-info");
-            console.log("Func AddCus " +token);
-            const result = await axios.post("http://localhost:49146/api/Customer", {
-                CompanyName:this.customer.CompanyName,
-                Surname:this.customer.Surname,
-                Lastname:this.customer.Lastname,
-                Dob:this.customer.Dob,
-                Street:this.customer.Street,
-                Nr:this.customer.Nr,
-                Postcode:this.customer.Postcode,
-                Country:this.customer.Country,
-                Cellphone:this.customer.Cellphone,
-                Landlinephone:this.customer.Landlinephone,
-                Email:this.customer.Email,
-                Note:this.customer.Note
-            }, 
-            {
-                headers: {"AuthToken" : token}
+            const result = await axios.post("http://localhost:49146/api/customer", {
+                CompanyName:this.result.CompanyName,
+                Surname:this.result.Surname,
+                Lastname:this.result.Lastname,
+                Dob:this.result.Dob,
+                Street:this.result.Street,
+                Nr:this.result.Nr,
+                Postcode:this.result.Postcode,
+                Country:this.result.Country,
+                Cellphone:this.result.Cellphone,
+                Landlinephone:this.result.Landlinephone,
+                Email:this.result.Email,
+                Note:this.result.Note
             });
-
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"Customer"});
             } else {
@@ -84,24 +66,59 @@ export default {
             }
         },
         async updateCustomer(){
-            let token = localStorage.getItem("user-info");
             const result = await axios.put("http://localhost:49146/api/customer/",{
-            //const result = await axios.put("http://localhost:49146/api/Customer",{
-                customer_nr:this.customer.customer_nr,
-                surname:this.customer.surname,
-                lastname:this.customer.lastname,
-                dob:this.customer.dob,
-                street:this.customer.street,
-                nr:this.customer.nr,
-                postcode:this.customer.postcode,
-                country:this.customer.country,
-                cellphone:this.customer.cellphone,
-                landlinephone:this.customer.landlinephone,
-                email:this.customer.email,
-                note:this.customer.note
-            },{headers: {"AuthToken" : token}});
+                customer_nr:this.result.customer_nr,
+                surname:this.result.surname,
+                lastname:this.result.lastname,
+                dob:this.result.dob,
+                street:this.result.street,
+                nr:this.result.nr,
+                postcode:this.result.postcode,
+                country:this.result.country,
+                cellphone:this.result.cellphone,
+                landlinephone:this.result.landlinephone,
+                email:this.result.email,
+                note:this.result.note
+            });
             if(result.status == 200){
                 this.$router.push({name:"Customer"});
+            } else {
+                alert("Result " + result.status);
+            }
+        }, 
+        async addCustomerBill() {
+            const result = await axios.post("http://localhost:49146/api/customerBill", {
+                Amount:this.result.CompanyName,
+                CompanyName:this.result.Surname,
+                ContactPerson:this.result.Lastname,
+                Currency:this.result.Dob,
+                CustomerBillNr:this.result.Street,
+                CustomerPostcode:this.result.Nr,
+                CustomerStreet:this.result.Postcode,
+                IssuedOn:this.result.Country,
+                PaymentDate:this.result.Cellphone,
+            });
+            if (result.status == 201 || result.status == 200) {
+                this.$router.push({name:"CustomerBill"});
+            } else {
+                alert("Result " + result.status);
+            }
+        },
+        async updateCustomerBill(){
+            const result = await axios.put("http://localhost:49146/api/customerBill/",{
+                CustomerBillNr:this.result.CustomerBillNr,
+                Amount:this.result.CompanyName,
+                CompanyName:this.result.Surname,
+                ContactPerson:this.result.Lastname,
+                Currency:this.result.Dob,
+                CustomerBillNr:this.result.Street,
+                CustomerPostcode:this.result.Nr,
+                CustomerStreet:this.result.Postcode,
+                IssuedOn:this.result.Country,
+                PaymentDate:this.result.Cellphone,
+            });
+            if(result.status == 200){
+                this.$router.push({name:"CustomerBill"});
             } else {
                 alert("Result " + result.status);
             }
