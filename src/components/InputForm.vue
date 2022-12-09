@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="addBtnContent">
-            <button class="addInputBtn" type="button" v-on:click="addCustomer()">
+            <button class="addInputBtn" type="button" v-on:click="add(this.$route.params.case)">
                 OK
             </button>
         </div>
@@ -43,6 +43,30 @@ export default {
         },
         getResult(){
             console.log(this.result);
+        },
+        add(value){
+            console.log("Case "+ this.$route.params.case);
+            switch(value) {
+                case "updateCustomer":
+                    this.updateCustomer();
+                break;
+                case "addCustomer":
+                    this.addCustomer();
+                break;
+                case "updateCustomerBill":
+                    this.updateCustomerBill();
+                break;
+                case "addCustomerBill":
+                    this.addCustomerBill();
+                break;
+                case "updateProduct":
+                    this.updateProduct();
+                break;
+                case "addProduct":
+                    this.addProduct();
+                break;
+                default: 
+            }
         },
         async addCustomer() {
             const result = await axios.post("http://localhost:49146/api/customer", {
@@ -123,6 +147,39 @@ export default {
                 alert("Result " + result.status);
             }
         }, 
+        async addProduct() {
+            const result = await axios.post("http://localhost:49146/api/product", {
+                ProductName:this.result.ProductName,
+                ProductSize:this.result.ProductSize,
+                PurchasingPricePerUnit:this.result.PurchasingPricePerUnit,
+                SellingPricePerUnit:this.result.SellingPricePerUnit,
+                Unit:this.result.Unit,
+                UnitsAvailable:this.result.UnitsAvailable,
+                Description:this.result.Description,
+            });
+            if (result.status == 201 || result.status == 200) {
+                this.$router.push({name:"Product"});
+            } else {
+                alert("Result " + result.status);
+            }
+        },
+        async updateProduct(){
+            const result = await axios.put("http://localhost:49146/api/product/",{
+                ProductNr:this.result.ProductNr,
+                ProductName:this.result.ProductName,
+                ProductSize:this.result.ProductSize,
+                PurchasingPricePerUnit:this.result.PurchasingPricePerUnit,
+                SellingPricePerUnit:this.result.SellingPricePerUnit,
+                Unit:this.result.Unit,
+                UnitsAvailable:this.result.UnitsAvailable,
+                Description:this.result.Description,
+            });
+            if(result.status == 200){
+                this.$router.push({name:"Product"});
+            } else {
+                alert("Result " + result.status);
+            }
+        }, 
     },
 
     async mounted() {
@@ -157,8 +214,7 @@ export default {
                 var result = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id, {headers: {"AuthToken" : token}});
                     this.result = result.data;
                 break;
-                default:
-                
+                default: 
             }
     }
 }
