@@ -111,16 +111,17 @@ export default {
             }
         }, 
         async addCustomerBill() {
+            console.log(this.result)
             const result = await axios.post("http://localhost:49146/api/customerBill", {
-                Amount:this.result[0].CompanyName,
-                CompanyName:this.result[0].Surname,
-                ContactPerson:this.result[0].Lastname,
-                Currency:this.result[0].Dob,
-                CustomerBillNr:this.result[0].Street,
-                CustomerPostcode:this.result[0].Nr,
-                CustomerStreet:this.result[0].Postcode,
-                IssuedOn:this.result[0].Country,
-                PaymentDate:this.result[0].Cellphone,
+                CompanyName:this.result[0].CompanyName,
+                ContactPerson:this.result[0].ContactPerson,
+                CustomerStreet:this.result[0].CustomerStreet,
+                CustomerPostcode:this.result[0].CustomerPostcode,
+                Amount:this.result[0].Amount,
+                Currency:this.result[0].Currency,
+                CustomerBillNr:this.result[0].CustomerBillNr,
+                IssuedOn:this.result[0].IssuedOn,
+                PaymentDate:this.result[0].PaymentDate,
             });
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"CustomerBill"});
@@ -131,15 +132,14 @@ export default {
         async updateCustomerBill(){
             const result = await axios.put("http://localhost:49146/api/customerBill/",{
                 CustomerBillNr:this.result[0].CustomerBillNr,
-                Amount:this.result[0].CompanyName,
-                CompanyName:this.result[0].Surname,
-                ContactPerson:this.result[0].Lastname,
-                Currency:this.result[0].Dob,
-                CustomerBillNr:this.result[0].Street,
-                CustomerPostcode:this.result[0].Nr,
-                CustomerStreet:this.result[0].Postcode,
-                IssuedOn:this.result[0].Country,
-                PaymentDate:this.result[0].Cellphone,
+                CompanyName:this.result[0].CompanyName,
+                ContactPerson:this.result[0].ContactPerson,
+                CustomerStreet:this.result[0].CustomerStreet,
+                CustomerPostcode:this.result[0].CustomerPostcode,
+                Amount:this.result[0].Amount,
+                Currency:this.result[0].Currency,
+                IssuedOn:this.result[0].IssuedOn,
+                PaymentDate:this.result[0].PaymentDate,
             });
             if(result.status == 200){
                 this.$router.push({name:"CustomerBill"});

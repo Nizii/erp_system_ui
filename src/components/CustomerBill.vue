@@ -125,7 +125,7 @@
             </td>
             <td>{{cbill.CustomerBillNr}}</td>
             <td>{{cbill.CompanyName}}</td>
-            <td>{{cbill.ContactPerson}}</td>
+            <td>{{cbill.ContactPerson}}</td>s
             <td>{{cbill.CustomerStreet}}</td>
             <td>{{cbill.CustomerPostcode}}</td>
             <td>{{cbill.Amount}}</td>
@@ -133,7 +133,7 @@
             <td>{{cbill.IssuedOn}}</td>
             <td>{{cbill.Deadline}}</td>
             <td>
-                <div class="tableBtn" v-on:click="deleteCustomer(cus.CustomerBillNr)" type="button">
+                <div class="tableBtn" v-on:click="deleteCustomerBill(cus.CustomerBillNr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
                         <g transform="translate(0 -1028.4)">
                          <path d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z" transform="translate(0 1029.4)" fill="#c0392b"/>

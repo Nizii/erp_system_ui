@@ -129,7 +129,7 @@
             <td>{{pro.PurchasingPricePerUnit}}</td>
             <td>{{pro.SellingPricePerUnit}}</td>
             <td>
-                <div class="tableBtn" v-on:click="deleteCustomer(pro.ProductNr)" type="button">
+                <div class="tableBtn" v-on:click="deleteProduct(pro.ProductNr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
                         <g transform="translate(0 -1028.4)">
                          <path d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z" transform="translate(0 1029.4)" fill="#c0392b"/>
