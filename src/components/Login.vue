@@ -33,8 +33,6 @@
                 .then(resp => {
                         if(resp.status == 200 && resp.data != null) {
                             alert("Session User "+resp.data);
-                            console.log("Login response data " + resp.data);
-                            console.log("Login response state " + resp.status);
                             localStorage.setItem("user-info", JSON.stringify(resp.data));
                             this.$router.push({name:'Home'});
                         } else {

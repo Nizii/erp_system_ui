@@ -197,7 +197,6 @@ export default {
             let result = await axios.delete('http://localhost:49146/api/customer/'+id);
             if(result.status==200){
                 this.loadData();
-                console.log(result.data);
             } else {
                 console.log(result.data);
             }
@@ -205,13 +204,11 @@ export default {
 
         async loadData(){
         let token = localStorage.getItem("user-info");
-        console.log("Session "+token);
         if(!token) {
             this.$router.push({name:'SignUp'});
         }
 
         let result = await axios.get("http://localhost:49146/api/customer");
-        console.log("Result " + result.data);
         if(result.data == null){
             console.log("No Data");
         } else {

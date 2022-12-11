@@ -6,6 +6,7 @@
 
 export default {
     name:"Input",
-    probs:['key', 'value']   
+    probs:['key', 'value'],
+    result:[]
 };
 </script>

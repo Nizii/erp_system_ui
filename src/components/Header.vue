@@ -28,7 +28,6 @@ export default {
         if(!token) {
             this.$router.push({name:'SignUp'});
         } 
-        console.log("Session " + token);
     }
 }
 </script>

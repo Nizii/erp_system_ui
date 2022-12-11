@@ -45,7 +45,6 @@ export default {
             console.log(this.result);
         },
         add(value){
-            console.log("Case "+ this.$route.params.case);
             switch(value) {
                 case "updateCustomer":
                     this.updateCustomer();
@@ -70,18 +69,18 @@ export default {
         },
         async addCustomer() {
             const result = await axios.post("http://localhost:49146/api/customer", {
-                CompanyName:this.result.CompanyName,
-                Surname:this.result.Surname,
-                Lastname:this.result.Lastname,
-                Dob:this.result.Dob,
-                Street:this.result.Street,
-                Nr:this.result.Nr,
-                Postcode:this.result.Postcode,
-                Country:this.result.Country,
-                Cellphone:this.result.Cellphone,
-                Landlinephone:this.result.Landlinephone,
-                Email:this.result.Email,
-                Note:this.result.Note
+                CompanyName:this.result[0].CompanyName,
+                Surname:this.result[0].Surname,
+                Lastname:this.result[0].Lastname,
+                Dob:this.result[0].Dob,
+                Street:this.result[0].Street,
+                Nr:this.result[0].Nr,
+                Postcode:this.result[0].Postcode,
+                Country:this.result[0].Country,
+                Cellphone:this.result[0].Cellphone,
+                Landlinephone:this.result[0].Landlinephone,
+                Email:this.result[0].Email,
+                Note:this.result[0].Note
             });
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"Customer"});
@@ -91,18 +90,19 @@ export default {
         },
         async updateCustomer(){
             const result = await axios.put("http://localhost:49146/api/customer/",{
-                customer_nr:this.result.customer_nr,
-                surname:this.result.surname,
-                lastname:this.result.lastname,
-                dob:this.result.dob,
-                street:this.result.street,
-                nr:this.result.nr,
-                postcode:this.result.postcode,
-                country:this.result.country,
-                cellphone:this.result.cellphone,
-                landlinephone:this.result.landlinephone,
-                email:this.result.email,
-                note:this.result.note
+                CustomerNr:this.result[0].CustomerNr,
+                CompanyName:this.result[0].CompanyName,
+                Surname:this.result[0].Surname,
+                Lastname:this.result[0].Lastname,
+                Dob:this.result[0].Dob,
+                Street:this.result[0].Street,
+                Nr:this.result[0].Nr,
+                Postcode:this.result[0].Postcode,
+                Country:this.result[0].Country,
+                Cellphone:this.result[0].Cellphone,
+                Landlinephone:this.result[0].Landlinephone,
+                Email:this.result[0].Email,
+                Note:this.result[0].Note
             });
             if(result.status == 200){
                 this.$router.push({name:"Customer"});
@@ -112,15 +112,15 @@ export default {
         }, 
         async addCustomerBill() {
             const result = await axios.post("http://localhost:49146/api/customerBill", {
-                Amount:this.result.CompanyName,
-                CompanyName:this.result.Surname,
-                ContactPerson:this.result.Lastname,
-                Currency:this.result.Dob,
-                CustomerBillNr:this.result.Street,
-                CustomerPostcode:this.result.Nr,
-                CustomerStreet:this.result.Postcode,
-                IssuedOn:this.result.Country,
-                PaymentDate:this.result.Cellphone,
+                Amount:this.result[0].CompanyName,
+                CompanyName:this.result[0].Surname,
+                ContactPerson:this.result[0].Lastname,
+                Currency:this.result[0].Dob,
+                CustomerBillNr:this.result[0].Street,
+                CustomerPostcode:this.result[0].Nr,
+                CustomerStreet:this.result[0].Postcode,
+                IssuedOn:this.result[0].Country,
+                PaymentDate:this.result[0].Cellphone,
             });
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"CustomerBill"});
@@ -130,16 +130,16 @@ export default {
         },
         async updateCustomerBill(){
             const result = await axios.put("http://localhost:49146/api/customerBill/",{
-                CustomerBillNr:this.result.CustomerBillNr,
-                Amount:this.result.CompanyName,
-                CompanyName:this.result.Surname,
-                ContactPerson:this.result.Lastname,
-                Currency:this.result.Dob,
-                CustomerBillNr:this.result.Street,
-                CustomerPostcode:this.result.Nr,
-                CustomerStreet:this.result.Postcode,
-                IssuedOn:this.result.Country,
-                PaymentDate:this.result.Cellphone,
+                CustomerBillNr:this.result[0].CustomerBillNr,
+                Amount:this.result[0].CompanyName,
+                CompanyName:this.result[0].Surname,
+                ContactPerson:this.result[0].Lastname,
+                Currency:this.result[0].Dob,
+                CustomerBillNr:this.result[0].Street,
+                CustomerPostcode:this.result[0].Nr,
+                CustomerStreet:this.result[0].Postcode,
+                IssuedOn:this.result[0].Country,
+                PaymentDate:this.result[0].Cellphone,
             });
             if(result.status == 200){
                 this.$router.push({name:"CustomerBill"});
@@ -149,13 +149,13 @@ export default {
         }, 
         async addProduct() {
             const result = await axios.post("http://localhost:49146/api/product", {
-                ProductName:this.result.ProductName,
-                ProductSize:this.result.ProductSize,
-                PurchasingPricePerUnit:this.result.PurchasingPricePerUnit,
-                SellingPricePerUnit:this.result.SellingPricePerUnit,
-                Unit:this.result.Unit,
-                UnitsAvailable:this.result.UnitsAvailable,
-                Description:this.result.Description,
+                ProductName:this.result[0].ProductName,
+                ProductSize:this.result[0].ProductSize,
+                PurchasingPricePerUnit:this.result[0].PurchasingPricePerUnit,
+                SellingPricePerUnit:this.result[0].SellingPricePerUnit,
+                Unit:this.result[0].Unit,
+                UnitsAvailable:this.result[0].UnitsAvailable,
+                Description:this.result[0].Description,
             });
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"Product"});
@@ -165,14 +165,14 @@ export default {
         },
         async updateProduct(){
             const result = await axios.put("http://localhost:49146/api/product/",{
-                ProductNr:this.result.ProductNr,
-                ProductName:this.result.ProductName,
-                ProductSize:this.result.ProductSize,
-                PurchasingPricePerUnit:this.result.PurchasingPricePerUnit,
-                SellingPricePerUnit:this.result.SellingPricePerUnit,
-                Unit:this.result.Unit,
-                UnitsAvailable:this.result.UnitsAvailable,
-                Description:this.result.Description,
+                ProductNr:this.result[0].ProductNr,
+                ProductName:this.result[0].ProductName,
+                ProductSize:this.result[0].ProductSize,
+                PurchasingPricePerUnit:this.result[0].PurchasingPricePerUnit,
+                SellingPricePerUnit:this.result[0].SellingPricePerUnit,
+                Unit:this.result[0].Unit,
+                UnitsAvailable:this.result[0].UnitsAvailable,
+                Description:this.result[0].Description,
             });
             if(result.status == 200){
                 this.$router.push({name:"Product"});
@@ -184,35 +184,33 @@ export default {
 
     async mounted() {
         let token = localStorage.getItem("user-info");
-        console.log("Update " + token);
         if(!token) {
             this.$router.push({name:'SignUp'});
         }
-        console.log("Case "+ this.$route.params.case);
         switch(this.$route.params.case) {
                 case "updateCustomer":
-                    var result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
-                    this.result = result.data;
+                    var resp = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
+                    this.result = resp.data;
                 break;
                 case "addCustomer":
-                    var result = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
-                    this.result = result.data;
+                    var resp = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
+                    this.result = resp.data;
                 break;
                 case "updateCustomerBill":
-                var result = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id);
-                    this.result = result.data;
+                var resp = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id);
+                    this.result = resp.data;
                 break;
                 case "addCustomerBill":
-                var result = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id);
-                    this.result = result.data;
+                var resp = await axios.get("http://localhost:49146/api/customerBill/"+this.$route.params.id);
+                    this.result = resp.data;
                 break;
                 case "updateProduct":
-                var result = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id);
-                    this.result = result.data;
+                var resp = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id);
+                    this.result = resp.data;
                 break;
                 case "addProduct":
-                var result = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id, {headers: {"AuthToken" : token}});
-                    this.result = result.data;
+                var resp = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                    this.result = resp.data;
                 break;
                 default: 
             }
