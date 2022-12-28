@@ -5,7 +5,7 @@
     <table>
         <tr>
             <th> 
-                <router-link type="button" class="addBtn" :to="{ name: 'InputForm', params: { id: 1, case: 'addCustomerBill' }}" >
+                <router-link type="button" class="addBtn" :to="{ name: 'InsertCustomerBill'}" >
                     <div class="tableBtn">
                         <svg class="tableBtn" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
                             <circle fill="#4CAF50" cx="24" cy="24" r="21"/>
@@ -50,7 +50,7 @@
         </tr>
         <tr v-for = "cbill in customerBill" :key="cbill.CustomerBillNr" class="pointer">
             <td>
-                <router-link type="button" :to="{ name: 'InputForm', params: { id: cbill.CustomerBillNr, case: 'updateCustomerBill' }}" >
+                <router-link type="button" :to="{ name: 'InsertCustomerBill'}" >
                     <div class="tableBtn">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -133,7 +133,7 @@
             <td>{{cbill.IssuedOn}}</td>
             <td>{{cbill.PaymentDate}}</td>
             <td>
-                <div class="tableBtn" v-on:click="deleteCustomerBill(cBill.CustomerBillNr)" type="button">
+                <div class="tableBtn" v-on:click="deleteCustomerBill(cbill.CustomerBillNr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
                         <g transform="translate(0 -1028.4)">
                          <path d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z" transform="translate(0 1029.4)" fill="#c0392b"/>
@@ -157,6 +157,7 @@ export default {
     data() {
         return {
             customerBill:[],
+            CustomerBillNr:"",
             CompanyName: "",
             ContactPerson: "",
             CustomerStreet: "",
@@ -170,7 +171,6 @@ export default {
 
     methods:{
         async deleteCustomerBill(id){
-            let token = localStorage.getItem("user-info");
             let result = await axios.delete('http://localhost:49146/api/CustomerBill/'+id);
             if(result.status==200){
                 this.loadData();
