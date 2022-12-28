@@ -29,7 +29,8 @@
                 //let result = axios.post("http://localhost:49146/api/User",{
                 //"http://localhost:49146/api/User", {
                 //await axios.get("http://localhost:49146/api/authentication/"+this.user_name+"/"+this.user_password)
-                await axios.get("http://localhost:49146/api/"+this.user_name+"/"+this.user_password)
+                //await axios.get("http://localhost:8081/api/"+this.user_name+"/"+this.user_password)
+                await axios.get("http://localhost:49146/"+this.user_name+"/"+this.user_password)
                 .then(resp => {
                         if(resp.status == 200 && resp.data != null) {
                             alert("Session User "+resp.data);

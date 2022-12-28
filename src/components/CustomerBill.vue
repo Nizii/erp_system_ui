@@ -125,15 +125,15 @@
             </td>
             <td>{{cbill.CustomerBillNr}}</td>
             <td>{{cbill.CompanyName}}</td>
-            <td>{{cbill.ContactPerson}}</td>s
+            <td>{{cbill.ContactPerson}}</td>
             <td>{{cbill.CustomerStreet}}</td>
             <td>{{cbill.CustomerPostcode}}</td>
             <td>{{cbill.Amount}}</td>
             <td>{{cbill.Currency}}</td>
             <td>{{cbill.IssuedOn}}</td>
-            <td>{{cbill.Deadline}}</td>
+            <td>{{cbill.PaymentDate}}</td>
             <td>
-                <div class="tableBtn" v-on:click="deleteCustomerBill(cus.CustomerBillNr)" type="button">
+                <div class="tableBtn" v-on:click="deleteCustomerBill(cBill.CustomerBillNr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
                         <g transform="translate(0 -1028.4)">
                          <path d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z" transform="translate(0 1029.4)" fill="#c0392b"/>
@@ -164,14 +164,14 @@ export default {
             Amount: "",
             Currency: "",
             IssuedOn: "",
-            Deadline: ""
+            PaymentDate: ""
         }
     },
 
     methods:{
         async deleteCustomerBill(id){
             let token = localStorage.getItem("user-info");
-            let result = await axios.delete('http://localhost:49146/api/CustomerBill/'+id, {headers: {"AuthToken" : token}});
+            let result = await axios.delete('http://localhost:49146/api/CustomerBill/'+id);
             if(result.status==200){
                 this.loadData();
             }
@@ -181,7 +181,7 @@ export default {
         if(!token) {
             this.$router.push({name:'SignUp'});
         }
-        let result = await axios.get("http://localhost:49146/api/CustomerBill", {headers: {"AuthToken" : token}});
+        let result = await axios.get("http://localhost:49146/api/CustomerBill");
         this.customerBill = result.data;
         }
     },

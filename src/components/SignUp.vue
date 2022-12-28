@@ -25,7 +25,7 @@
         async signUp() {
             //await axios.post("https://men5.azurewebsites.net/api/user?user_name="+this.user_name+"&user_email="+this.user_email+"&user_password="+this.user_password)
                 //let result = axios.post(variables.API_URL + "user",{
-            axios.post("http://localhost:49146/api/"+this.user_name+"/"+this.user_password)
+            axios.post("/api/"+this.user_name+"/"+this.user_password)
             .then(resp =>{
                 if(resp.status == 200 && resp.data != null) {
                     alert("Session User " + resp.data);

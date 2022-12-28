@@ -5,7 +5,7 @@
     <table border = "1">
         <tr>
             <th> 
-                <router-link type="button" :to="{ name: 'InputForm', params: { id: 1, case: 'addCustomer' }}" >
+                <router-link type="button" :to="{ name: 'InsertCustomer'}" >
                     <div class="tableBtn">
                         <svg class="tableBtn" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
                             <circle fill="#4CAF50" cx="24" cy="24" r="21"/>
@@ -63,7 +63,7 @@
         <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer">
             <td>
                 <!--<router-link type="button" :to="'/updateCustomer/'+cus.customer_nr">-->
-                <router-link type="button" :to="{ name: 'InputForm', params: { id: 1, case: 'updateCustomer' }}" >
+                <router-link type="button" :to="{ name: 'InputForm', params: { id: cus.CustomerNr, case: 'updateCustomer' }}" >
                     <div class="tableBtn">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -208,6 +208,7 @@ export default {
             this.$router.push({name:'SignUp'});
         }
 
+        //let result = await axios.get("http://localhost:8081/api/customer");
         let result = await axios.get("http://localhost:49146/api/customer");
         if(result.data == null){
             console.log("No Data");

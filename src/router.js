@@ -2,6 +2,7 @@ import Home from'./components/Home.vue'
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
 import Customer from './components/Customer'
+import InsertCustomer from './components/InsertCustomer'
 import InputForm from './components/InputForm'
 import Product from './components/Product'
 import CustomerBill from './components/CustomerBill'
@@ -29,6 +30,11 @@ const routes = [
         name:'Customer',
         component:Customer,
         path:'/customer'
+    },
+    {
+        name:'InsertCustomer',
+        component:InsertCustomer,
+        path:'/insertcustomer'
     },
     {
         name:'InputForm',

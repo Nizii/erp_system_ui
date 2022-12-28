@@ -6,10 +6,13 @@
              Zurück
             </button>
         </div>
-        <div v-for = "(value, key) in result[0]" :key="value.value">
+        <div v-for = "(value, key) in result[0]" :key="value.value" >
             <div class="inputContent">
-            <p class="inputLabel" >{{key}}</p>
-            <Input :value=value />
+                <p class="inputLabel" >{{key}}</p>
+                <Input v-if="this.$route.params.case === 'updateCustomer'" :value = value />
+                <Input v-else-if="this.$route.params.case === 'updateCustomerBill'" :value = value />
+                <Input v-else-if="this.$route.params.case === 'updateProduct'" :value = value />
+                <Input v-else v-model="this.result[0][value]" />
             </div>
         </div>
         <div class="addBtnContent">
@@ -50,6 +53,7 @@ export default {
                     this.updateCustomer();
                 break;
                 case "addCustomer":
+                    console.log("Here" + this.result[0]);
                     this.addCustomer();
                 break;
                 case "updateCustomerBill":
@@ -190,6 +194,7 @@ export default {
         switch(this.$route.params.case) {
                 case "updateCustomer":
                     var resp = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
+                    var resp = await axios.get("http://localhost:49146/api/customer/"+this.$route.params.id);
                     this.result = resp.data;
                 break;
                 case "addCustomer":
@@ -209,7 +214,7 @@ export default {
                     this.result = resp.data;
                 break;
                 case "addProduct":
-                var resp = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id, {headers: {"AuthToken" : token}});
+                var resp = await axios.get("http://localhost:49146/api/product/"+this.$route.params.id);
                     this.result = resp.data;
                 break;
                 default: 
