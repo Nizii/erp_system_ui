@@ -173,12 +173,12 @@ export default {
             }
         },
         async loadData(){
-        let token = localStorage.getItem("user-info");
-        if(!token) {
-            this.$router.push({name:'SignUp'});
-        }
-        let result = await axios.get("http://localhost:49146/api/product");
-        this.products = result.data;
+            let token = localStorage.getItem("user-info");
+            if(!token) {
+                this.$router.push({name:'SignUp'});
+            }
+            let result = await axios.get("http://localhost:49146/api/product");
+            this.products = result.data;
         }
     },
 

@@ -64,13 +64,9 @@ export default {
             selling_price_per_unit: "",
         }
     },
-
     methods:{
         goback(){
             this.$router.push({name:"Product"});
-        },
-        getResult(){
-            console.log(this.result);
         },
         async addProduct() {
             const result = await axios.post("http://localhost:49146/api/product", {

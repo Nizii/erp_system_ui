@@ -134,7 +134,7 @@ form{
   height: 30px;
 }
 
-.inputLabel{
+.inputLabel {
   padding-left: 5px;
   text-align: left;
   width: 120px;  

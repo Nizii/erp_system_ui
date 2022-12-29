@@ -1,6 +1,6 @@
 <template>
     <Header/>
-    <form>
+    <form name="form">
         <div id="backBtnContent">
             <button class="backBtn" type="button" v-on:click="goback()">
              Zurück
@@ -22,21 +22,28 @@
             <p class="inputLabel" >PLZ</p>
             <input v-model="CustomerPostcode">
         </div>
-        <div class="inputContent">
+        <div class="inputContent" name="betrag">
             <p class="inputLabel" >Betrag in CHF</p>
             <input v-model="Amount">
         </div>
         <div class="inputContent">
             <p class="inputLabel" >Währung</p>
-            <input v-model="Currency">
+            <!--<input v-model="Currency">-->
+            <select name="select" v-model="Currency" id="select">
+                <option value="CHF">CHF</option>
+                <option value="EURO">EURO</option>
+                <option value="USD">USD</option>
+            </select>
         </div>
         <div class="inputContent">
             <p class="inputLabel" >Ausgestellt</p>
-            <input v-model="IssuedOn">
+            <input type="date" v-model="IssuedOn" id="dateInput" name="Ausgestellt">
+            <!--<input v-model="IssuedOn">-->
         </div>
         <div class="inputContent">
             <p class="inputLabel" >Fällig</p>
-            <input v-model="PaymentDate">
+            <input type="date" v-model="PaymentDate" id="dateInput" name="Fällig">
+            <!--<input v-model="PaymentDate">-->
         </div>
         <div class="addBtnContent">
             <button class="addInputBtn" type="button" v-on:click="addCustomerBill()">
@@ -62,8 +69,8 @@ export default {
             ContactPerson: "",
             CustomerStreet: "",
             CustomerPostcode: "",
-            Amount: "",
-            Currency: "",
+            Amount: 0,
+            Currency: "CHF",
             IssuedOn: "",
             PaymentDate: "",
         }
@@ -77,6 +84,7 @@ export default {
             console.log(this.result);
         },
         async addCustomerBill() {
+            console.log("Currency " + this.Currency);
             const result = await axios.post("http://localhost:49146/api/customerBill", {
                 CompanyName:this.CompanyName,
                 ContactPerson:this.ContactPerson,
