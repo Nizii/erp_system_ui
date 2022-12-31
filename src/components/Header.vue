@@ -19,7 +19,7 @@ export default {
     methods:{
         async logout(){
             //localStorage.clear();
-            await axios.get("http://localhost:49146/api/clear")
+            await axios.get("http://localhost:49146/clear")
             this.$router.push({name:"Login"})
         }
     },
