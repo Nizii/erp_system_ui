@@ -60,7 +60,7 @@
                 
             </th>
         </tr>
-        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer">
+        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:dblclick="selectRow(cus.CustomerNr)">
             <td>
                 <router-link type="button" :to="'/updateCustomer/'+cus.CustomerNr">
                     <div class="tableBtn">
@@ -200,6 +200,10 @@ export default {
             } else {
                 console.log(result.data);
             }
+        },
+
+        selectRow(id){
+            //this.$router.push({name:'/UpdateCustomer/'+id});
         },
 
         async loadData(){

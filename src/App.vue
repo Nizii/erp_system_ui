@@ -184,7 +184,7 @@ th {
 tr{
   background-color: antiquewhite;
   border: 1px solid #ccc;
-  height: 50px;
+  height: 40px;
 }
 
 td{

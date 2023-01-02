@@ -36,10 +36,10 @@
                 Einheit
             </th>
             <th>
-                Einkauf
+                Einkauf (CHF)
             </th>
             <th>
-                Verkauf
+                Verkauf (CHF)
             </th>
             <th>
 
