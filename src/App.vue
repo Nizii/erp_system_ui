@@ -150,7 +150,7 @@ form input {
   margin-top: 0.3%;
   margin-bottom: 0.3%;
   padding-right: 0.33%;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid #ccc;
 }
 
@@ -184,6 +184,7 @@ th {
 tr{
   background-color: antiquewhite;
   border: 1px solid #ccc;
+  height: 50px;
 }
 
 td{
@@ -192,7 +193,7 @@ td{
 
 th, td {
   text-align: left;
-  padding: 4px;
+  padding: 8px;
   width: auto;
 }
 tr:nth-child(even){background-color:  #f2f2f2}

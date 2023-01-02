@@ -1,6 +1,6 @@
 <template>
 <Header/>
-<h1>Kunde</h1>
+<h1>Kontakte</h1>
 <body class="bodyInsideApp">
     <table border = "1">
         <tr>

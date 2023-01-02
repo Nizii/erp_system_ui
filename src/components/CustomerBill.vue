@@ -2,7 +2,7 @@
 <Header/>
 <h1>Kunden Rechnungen</h1>
 <body class="bodyInsideApp">
-    <table>
+    <table border = "1">
         <tr>
             <th> 
                 <router-link type="button" class="addBtn" :to="{ name: 'InsertCustomerBill'}" >

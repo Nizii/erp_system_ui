@@ -20,7 +20,7 @@
         </div>
         <div class="inputContent">
             <p class="inputLabel" >Geburtsdatum</p>
-            <input v-model="Dob">
+            <input type="date" v-model="Dob">
         </div>
         <div class="inputContent">
             <p class="inputLabel" >Strasse</p>

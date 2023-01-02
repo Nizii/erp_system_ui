@@ -2,7 +2,7 @@
 <Header/>
 <h1>Produkte</h1>
 <body class="bodyInsideApp">
-    <table>
+    <table border = "1">
         <tr>
             <th> 
                 <router-link class="addBtn" type="button" :to="{ name: 'InsertProduct'}" >
