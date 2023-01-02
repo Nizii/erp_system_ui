@@ -176,6 +176,7 @@ export default {
                 this.loadData();
             }
         },
+
         async loadData(){
         let token = localStorage.getItem("user-info");
         if(!token) {
@@ -183,6 +184,9 @@ export default {
         }
         let result = await axios.get("http://localhost:49146/api/CustomerBill");
         this.customerBill = result.data;
+        console.log(result.data.IssuedOn);
+        //console.log(this.customerBill.IssuedOn.getDate());
+        //this.customerBill.IssuedOn = this.customerBill.IssuedOn.slice(0,-1);
         }
     },
 
@@ -190,7 +194,7 @@ export default {
         Header
     },
 
-    async mounted() {
+    mounted() {
         this.loadData();
     }
 }

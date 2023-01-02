@@ -107,8 +107,7 @@ body{
 }
 
 form{
-
-  
+  background-color: GhostWhite;
 }
 
 #backBtnContent{
@@ -118,46 +117,86 @@ form{
 
 }
 
-.inputContent{
+form input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.inputContent {
   display: flex; 
   flex-direction: row; 
   justify-content: center; 
   align-items: center;
-  height: 35px;
+  height: 50px;
   background-color: antiquewhite;
-  
+  margin-left: 39%;
+  margin-right: 39%;  
+  margin-top: 0.3%;
+  margin-bottom: 0.3%;
+  padding-right: 0.33%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 .inputContent:nth-child(even){background-color: #f2f2f2}
+
 
 .addInput{
   height: 30px;
 }
 
 .inputLabel {
-  padding-left: 5px;
   text-align: left;
-  width: 120px;  
-  
+  width: 300px;  
+  padding-left: 3%;
 }
 
 table {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
 }
 
 th {
+  background-color: Sienna;
+  color: whitesmoke;
+  font-weight: normal;
+}
+
+tr{
   background-color: antiquewhite;
+  border: 1px solid #ccc;
+}
+
+td{
+  border: 1px solid #ccc;
 }
 
 th, td {
   text-align: left;
   padding: 4px;
   width: auto;
-  border: 0.5px solid;
 }
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color:  #f2f2f2}
+
 tr:hover {
   background-color: rgb(199, 199, 199);
 }
@@ -175,7 +214,6 @@ tr:hover {
 
 .updateBtn, .deleteBtn, .addBtn{
   font-size: 15px;
-  font-weight: bold;
   color: whitesmoke;
   padding: 0;
 }
