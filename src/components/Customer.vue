@@ -60,7 +60,7 @@
                 
             </th>
         </tr>
-        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:dblclick="selectRow(cus.CustomerNr)">
+        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:dblclick="selectRow(cus.CustomerNr)" v-contextmenu:contextmenu>
             <td>
                 <router-link type="button" :to="'/updateCustomer/'+cus.CustomerNr">
                     <div class="tableBtn">
@@ -161,15 +161,34 @@
                 </div>
             </td>
         </tr>
+        <v-contextmenu ref="contextmenu">
+            <v-contextmenu-item>Neuen Kontakt erstellen</v-contextmenu-item>
+            <v-contextmenu-item>Bearbeiten</v-contextmenu-item>
+            <v-contextmenu-item>Rechnung schreiben</v-contextmenu-item>
+            <v-contextmenu-item>Rechnungsverlauf anzeigen</v-contextmenu-item>
+            <v-contextmenu-item>Offerte schreiben</v-contextmenu-item>
+            <v-contextmenu-item>Löschen</v-contextmenu-item>
+          </v-contextmenu>
     </table>
+
 </body>
 </template>
 
 <script>
 import Header from './Header.vue';
 import axios from 'axios';
-//axios.defaults.withCredentials = true;
+import { directive, Contextmenu, ContextmenuItem } from "v-contextmenu";
+import "v-contextmenu/dist/themes/default.css";
+
 export default {
+    directives: {
+    contextmenu: directive,
+  },
+
+  components: {
+    [Contextmenu.name]: Contextmenu,
+    [ContextmenuItem.name]: ContextmenuItem,
+  },
     name:'Home',
     data() {
         return {

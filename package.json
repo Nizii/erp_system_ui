@@ -16,6 +16,7 @@
     "js-sha512": "^0.8.0",
     "s-salt-pepper": "^3.0.4",
     "scrypt-js": "^3.0.1",
+    "v-contextmenu": "^3.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.13"
   },
