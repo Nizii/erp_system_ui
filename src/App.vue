@@ -34,14 +34,19 @@ body{
 
 .item{
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  border:1px solid #ccc;
-  margin: 1px;
-
+  border:1px solid black;
+  background-color: #ccc;
 }
 
-.menu-container :nth-child(even){background-color: antiquewhite}
+.item:hover{
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  border:1px solid black;
+  background-color: yellow;
+  color: black
+}
+
 .menu-container{
-  
+
 }
 
 .register input{
@@ -199,6 +204,7 @@ tr{
   height: 40px;
 }
 
+
 td{
   border: 1px solid #ccc;
 }
@@ -210,8 +216,13 @@ th, td {
 }
 tr:nth-child(even){background-color:  #f2f2f2}
 
+.selected-row{
+  /*background-color: rgb(199, 199, 199) !important;*/
+  background-color: yellow !important;
+}
+
 tr:hover {
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(230, 230, 230);
 }
 .pointer {cursor: pointer;}
 

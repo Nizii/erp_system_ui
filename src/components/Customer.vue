@@ -2,7 +2,7 @@
 <Header/>
 <h1>Kontakte</h1>
 <body class="bodyInsideApp">
-    <table border = "1">
+    <table id="table" border = "1">
         <tr>
             <th> 
                 <router-link type="button" :to="{ name: 'InsertCustomer'}" >
@@ -60,7 +60,7 @@
                 
             </th>
         </tr>
-        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:dblclick="selectRow(cus.CustomerNr)" v-contextmenu:contextmenu>
+        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:dblclick="selectRow(cus.CustomerNr)" v-on:click="manageSelectedRow(1)" v-on:click.right="manageSelectedRow(2)" @contextmenu.prevent="handler" v-contextmenu:contextmenu>
             <td>
                 <router-link type="button" :to="'/updateCustomer/'+cus.CustomerNr">
                     <div class="tableBtn">
@@ -211,6 +211,26 @@ export default {
     },
 
     methods:{
+
+        manageSelectedRow(id){
+            var rows = document.getElementsByTagName("tr");
+            for(var i = 1; i < rows.length; i++) {
+                var currentRow = rows[i];
+                if(id == 1) {
+                    currentRow.onclick = function() {
+                        [...this.parentElement.children].forEach((el) => el.classList.remove("selected-row"));
+                        this.classList.add("selected-row");
+                    }
+                } else if (id == 2) {
+                    currentRow.oncontextmenu = function() {
+                        [...this.parentElement.children].forEach((el) => el.classList.remove("selected-row"));
+                        this.classList.add("selected-row");
+                    }
+                }
+            }
+        },
+
+
         async deleteCustomer(id){
             //let result = await axios.delete('https://men5.azurewebsites.net/api/Customer/'+id);
             console.log("btn pressed = "+id);
