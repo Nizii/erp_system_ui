@@ -161,13 +161,14 @@
                 </div>
             </td>
         </tr>
-        <v-contextmenu ref="contextmenu">
-            <v-contextmenu-item>Neuen Kontakt erstellen</v-contextmenu-item>
-            <v-contextmenu-item>Bearbeiten</v-contextmenu-item>
-            <v-contextmenu-item>Rechnung schreiben</v-contextmenu-item>
-            <v-contextmenu-item>Rechnungsverlauf anzeigen</v-contextmenu-item>
-            <v-contextmenu-item>Offerte schreiben</v-contextmenu-item>
-            <v-contextmenu-item>Löschen</v-contextmenu-item>
+        <v-contextmenu class="menu-container" ref="contextmenu">
+            <v-contextmenu-item class="item">Neuen Kontakt erstellen</v-contextmenu-item>
+            <v-contextmenu-item class="item">Bearbeiten</v-contextmenu-item>
+            <v-contextmenu-item class="item">Neue Rechnung</v-contextmenu-item>
+            <v-contextmenu-item class="item">Rechnungen anzeigen</v-contextmenu-item>
+            <v-contextmenu-item class="item">Neue Offerte</v-contextmenu-item>
+            <v-contextmenu-item class="item">Offerten anzeigen</v-contextmenu-item>
+            <v-contextmenu-item class="item">Löschen</v-contextmenu-item>
           </v-contextmenu>
     </table>
 

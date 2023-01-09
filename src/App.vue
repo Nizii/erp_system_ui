@@ -32,6 +32,18 @@ body{
   width: 100px;
 }
 
+.item{
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  border:1px solid #ccc;
+  margin: 1px;
+
+}
+
+.menu-container :nth-child(even){background-color: antiquewhite}
+.menu-container{
+  
+}
+
 .register input{
   width: 300px;
   height: 40px;
