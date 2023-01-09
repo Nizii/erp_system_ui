@@ -5,7 +5,7 @@
     <table id="table" border = "1">
         <tr>
             <th> 
-                <router-link type="button" :to="{ name: 'InsertCustomer'}" >
+                <router-link type="button" :to="{ name: 'InsertCustomer'}">
                     <div class="tableBtn">
                         <svg class="tableBtn" viewBox="0 0 48 48" version="1" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 48 48">
                             <circle fill="#4CAF50" cx="24" cy="24" r="21"/>
@@ -60,7 +60,7 @@
                 
             </th>
         </tr>
-        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:dblclick="selectRow(cus.CustomerNr)" v-on:click="manageSelectedRow(1)" v-on:click.right="manageSelectedRow(2)" @contextmenu.prevent="handler" v-contextmenu:contextmenu>
+        <tr v-for = "cus in customer" :key="cus.CustomerNr" class="pointer" v-on:click="manageSelectedRow(1, cus.CustomerNr)" v-on:click.right="manageSelectedRow(2, cus.CustomerNr)" @contextmenu.prevent="handler" v-contextmenu:contextmenu>
             <td>
                 <router-link type="button" :to="'/updateCustomer/'+cus.CustomerNr">
                     <div class="tableBtn">
@@ -162,13 +162,13 @@
             </td>
         </tr>
         <v-contextmenu class="menu-container" ref="contextmenu">
-            <v-contextmenu-item class="item">Neuen Kontakt erstellen</v-contextmenu-item>
-            <v-contextmenu-item class="item">Bearbeiten</v-contextmenu-item>
+            <v-contextmenu-item class="item" v-on:click="insertNew()">Neuen Kontakt erstellen</v-contextmenu-item>
+            <v-contextmenu-item class="item" v-on:click="update()">Bearbeiten</v-contextmenu-item>
             <v-contextmenu-item class="item">Neue Rechnung</v-contextmenu-item>
             <v-contextmenu-item class="item">Rechnungen anzeigen</v-contextmenu-item>
             <v-contextmenu-item class="item">Neue Offerte</v-contextmenu-item>
             <v-contextmenu-item class="item">Offerten anzeigen</v-contextmenu-item>
-            <v-contextmenu-item class="item">Löschen</v-contextmenu-item>
+            <v-contextmenu-item class="item" v-on:click="deleteRow()">Löschen</v-contextmenu-item>
           </v-contextmenu>
     </table>
 
@@ -193,6 +193,7 @@ export default {
     name:'Home',
     data() {
         return {
+            id:0,
             customer:[],
             CustomerNr:"",
             CompanyName: "",
@@ -212,16 +213,17 @@ export default {
 
     methods:{
 
-        manageSelectedRow(id){
+        manageSelectedRow(mouse, id){
+            this.id = id;
             var rows = document.getElementsByTagName("tr");
             for(var i = 1; i < rows.length; i++) {
                 var currentRow = rows[i];
-                if(id == 1) {
+                if(mouse == 1) {
                     currentRow.onclick = function() {
                         [...this.parentElement.children].forEach((el) => el.classList.remove("selected-row"));
                         this.classList.add("selected-row");
                     }
-                } else if (id == 2) {
+                } else if (mouse == 2) {
                     currentRow.oncontextmenu = function() {
                         [...this.parentElement.children].forEach((el) => el.classList.remove("selected-row"));
                         this.classList.add("selected-row");
@@ -230,10 +232,25 @@ export default {
             }
         },
 
+        insertNew(){
+            this.$router.push({name:'InsertCustomer'});
+        },
+
+        update(){
+            this.$router.push({path:'/updatecustomer/'+this.id});
+        },
+
+        async deleteRow(){
+            let result = await axios.delete('http://localhost:49146/api/customer/'+this.id);
+            if(result.status==200){
+                this.loadData();
+            } else {
+                console.log(result.data);
+            }
+        },
 
         async deleteCustomer(id){
             //let result = await axios.delete('https://men5.azurewebsites.net/api/Customer/'+id);
-            console.log("btn pressed = "+id);
             let result = await axios.delete('http://localhost:49146/api/customer/'+id);
             if(result.status==200){
                 this.loadData();
