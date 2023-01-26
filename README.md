@@ -13,6 +13,7 @@ For more details about the **backend** see my other repository on this project [
 * CSS
 * C# (Linq, Dervat, ISession)
 * MySQL
+* Password Hashing with BCrypt
 
 ### Design
 * Figma
