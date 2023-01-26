@@ -25,7 +25,7 @@ For more details about the **backend** see my other repository on this project [
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Kontakte.PNG)
 
 # CustomerBill
-![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Rechung.PNG)
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Rechnung.PNG)
 
 # Chart
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Chart.PNG)
