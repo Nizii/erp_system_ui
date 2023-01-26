@@ -8,10 +8,10 @@ For more details about the **backend** see my other repository on this project [
 
 # Technologies
 ### Languages
-* Javascript (Vue3.js, Axios)
+* Javascript (Vue3.js, Axios, Chart.js)
 * HTML
 * CSS
-* C# (Linq, ISession)
+* C# (Linq, Dervat, ISession)
 * MySQL
 
 ### Design
@@ -26,6 +26,9 @@ For more details about the **backend** see my other repository on this project [
 
 # CustomerBill
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Rechung.PNG)
+
+# Chart
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Chart.PNG)
 
 # Product
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Produkte.PNG)
