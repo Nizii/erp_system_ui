@@ -2,6 +2,7 @@
 <Header/>
 <h1>Kontakte</h1>
 <body class="bodyInsideApp">
+    <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Firma filtern">
     <table id="table" border = "1">
         <tr>
             <th> 
@@ -258,6 +259,7 @@ export default {
                 Note:resp.data.Note
             });
             if (result.status == 201 || result.status == 200) {
+                location.reload();
                 this.$router.push({name:"Customer"});
             } else {
                 alert("Result " + result.status);
@@ -283,15 +285,37 @@ export default {
             }
         },
 
+        filter(){
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        },
+
         selectRow(id){
             //this.$router.push({name:'/UpdateCustomer/'+id});
         },
 
         async loadData(){
-        let token = localStorage.getItem("user-info");
-        if(!token) {
-            this.$router.push({name:'SignUp'});
-        }
+            let token = localStorage.getItem("user-info");
+            if(!token) {
+                this.$router.push({name:'SignUp'});   
+            }
 
         //let result = await axios.get("http://localhost:8081/api/customer");
         let result = await axios.get("http://localhost:49146/api/customer");
@@ -300,6 +324,8 @@ export default {
         } else {
             this.customer = result.data;
         }
+
+
    
         /*
         await axios.get("http://127.0.0.1::49146/api/Customer")

@@ -241,4 +241,17 @@ tr:hover {
   color: whitesmoke;
   padding: 0;
 }
+
+#myInput {
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: auto; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 12px; /* Add some space below the input */
+}
 </style>

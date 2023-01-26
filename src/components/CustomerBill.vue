@@ -2,7 +2,8 @@
 <Header/>
 <h1>Kunden Rechnungen</h1>
 <body class="bodyInsideApp">
-    <table border = "1">
+    <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Firma filtern">
+    <table id="table" border = "1">
         <tr>
             <th> 
                 <router-link type="button" class="addBtn" :to="{ name: 'InsertCustomerBill'}" >
@@ -226,6 +227,28 @@ export default {
             this.$router.push({path:'/updatecustomerbill/'+this.id});
         },
 
+        filter(){
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        },
+
         async copy() {
             var resp = await axios.get("http://localhost:49146/api/customerBill/"+this.id);
             const result = await axios.post("http://localhost:49146/api/customerBill", {
@@ -242,6 +265,7 @@ export default {
                 State:resp.data.State
             });
             if (result.status == 201 || result.status == 200) {
+                location.reload();
                 this.$router.push({name:"CustomerBill"});
             } else {
                 alert("Result " + result.status);
