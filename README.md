@@ -21,11 +21,26 @@ For more details about the **backend** see my other repository on this project [
 * Visual Studio Code (Frontend)
 * Visual Studio (Backend)
 
-# Customer mainpage
-![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Home.PNG)
+# Customer
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Kontakte.PNG)
+
+# CustomerBill
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Rechung.PNG)
+
+# Product
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Produkte.PNG)
 
 # Update data
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Update.PNG)
+
+# Add new data
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Add.PNG)
+
+# Filter data
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Filter.PNG)
+
+# Sort column
+![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Sort.PNG)
 
 # Login
 ![alt text](https://github.com/Nizii/ui/blob/master/src/assets/Login.PNG)
