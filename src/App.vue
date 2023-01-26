@@ -218,11 +218,11 @@ tr:nth-child(even){background-color:  #f2f2f2}
 
 .selected-row{
   /*background-color: rgb(199, 199, 199) !important;*/
-  background-color: yellow !important;
+  background-color: #bcc2f3 !important;
 }
 
 tr:hover {
-  background-color: rgb(230, 230, 230);
+  background-color: #f7f597;
 }
 .pointer {cursor: pointer;}
 

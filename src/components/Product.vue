@@ -45,7 +45,7 @@
 
             </th>
         </tr>
-        <tr v-for = "pro in products" :key="pro.Product_nr" class="pointer">
+        <tr v-for = "pro in products" :key="pro.product_nr" class="pointer" v-on:click="manageSelectedRow(1, pro.product_nr)" v-on:click.right="manageSelectedRow(2, pro.product_nr)" @contextmenu.prevent="handler" v-contextmenu:contextmenu>
             <td>
                 <router-link type="button" :to="'/updateProduct/'+ pro.product_nr">
                     <div class="tableBtn">
@@ -141,6 +141,18 @@
                 </div>
             </td>
         </tr>
+        <v-contextmenu class="menu-container" ref="contextmenu">
+            <v-contextmenu-item class="item" v-on:click="insertNew()">Neu</v-contextmenu-item>
+            <v-contextmenu-item class="item" v-on:click="update()">Bearbeiten</v-contextmenu-item>
+            <v-contextmenu-item class="item" v-on:click="copy()">Dublizieren</v-contextmenu-item>
+            <!--
+            <v-contextmenu-item class="item">Neue Rechnung</v-contextmenu-item>
+            <v-contextmenu-item class="item">Rechnungen anzeigen</v-contextmenu-item>
+            <v-contextmenu-item class="item">Neue Offerte</v-contextmenu-item>
+            <v-contextmenu-item class="item">Offerten anzeigen</v-contextmenu-item>
+            -->
+            <v-contextmenu-item class="item" v-on:click="deleteRow()">Löschen</v-contextmenu-item>
+          </v-contextmenu>
     </table>
 </body>
 </template>
@@ -148,10 +160,23 @@
 <script>
 import Header from './Header.vue';
 import axios from 'axios';
+import { directive, Contextmenu, ContextmenuItem } from "v-contextmenu";
+import "v-contextmenu/dist/themes/default.css";
+
 export default {
+    directives: {
+    contextmenu: directive,
+  },
+
+  components: {
+    [Contextmenu.name]: Contextmenu,
+    [ContextmenuItem.name]: ContextmenuItem,
+  },
+
     name:'Home',
     data() {
         return {
+            id:0,
             products:[],
             product_nr: "",
             product_name: "",
@@ -165,6 +190,63 @@ export default {
     },
 
     methods:{
+
+        manageSelectedRow(mouse, id){
+            this.id = id;
+            var rows = document.getElementsByTagName("tr");
+            for(var i = 1; i < rows.length; i++) {
+                var currentRow = rows[i];
+                if(mouse == 1) {
+                    currentRow.onclick = function() {
+                        [...this.parentElement.children].forEach((el) => el.classList.remove("selected-row"));
+                        this.classList.add("selected-row");
+                    }
+                } else if (mouse == 2) {
+                    currentRow.oncontextmenu = function() {
+                        [...this.parentElement.children].forEach((el) => el.classList.remove("selected-row"));
+                        this.classList.add("selected-row");
+                    }
+                }
+            }
+        },
+
+        insertNew() {
+            this.$router.push({name:'InsertProduct'});
+        },
+
+        update() {
+            this.$router.push({path:'/updateproduct/'+this.id});
+        },
+
+        async copy() {
+            var resp = await axios.get("http://localhost:49146/api/product/"+this.id);
+            const result = await axios.post("http://localhost:49146/api/product", {
+                product_nr:resp.data.product_nr,
+                product_name:resp.data.product_name,
+                product_size:resp.data.product_size,
+                description:resp.data.description,
+                units_available:resp.data.units_available,
+                unit:resp.data.unit,
+                purchasing_price_per_unit:resp.data.purchasing_price_per_unit,
+                selling_price_per_unit:resp.data.selling_price_per_unit,
+            });
+            if (result.status == 201 || result.status == 200) {
+                location.reload();
+                this.$router.push({name:"Product"});
+            } else {
+                alert("Result " + result.status);
+            }
+        },
+
+        async deleteRow(){
+            let result = await axios.delete('http://localhost:49146/api/product/'+this.id);
+            if(result.status==200){
+                this.loadData();
+            } else {
+                console.log(result.data);
+            }
+        },
+
         async deleteProduct(id){
             let token = localStorage.getItem("user-info");
             let result = await axios.delete('http://localhost:49146/api/product/'+id);
