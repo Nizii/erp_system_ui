@@ -2,7 +2,9 @@
 <Header/>
 <h1>Kunden Rechnungen</h1>
 <body class="bodyInsideApp">
-    <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Firma filtern">
+    <div class="filterContainer">
+        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Firma filtern">
+    </div>
     <table id="table" border = "1">
         <tr>
             <th> 

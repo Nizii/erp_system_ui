@@ -1,8 +1,10 @@
 <template>
 <Header/>
 <h1>Produkte</h1>
-<input type="text" id="myInput" v-on:keyup="filter()" placeholder="Produkt filtern">
 <body class="bodyInsideApp">
+    <div class="filterContainer">
+        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Produkt filtern">
+    </div>
     <table id="table" border = "1">
         <tr>
             <th> 

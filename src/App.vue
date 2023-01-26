@@ -35,13 +35,13 @@ body{
 .item{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   border:1px solid black;
-  background-color: #ccc;
+  background-color: #f2f2f2;
 }
 
 .item:hover{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   border:1px solid black;
-  background-color: yellow;
+  background-color: #bcc2f3;
   color: black
 }
 
@@ -200,7 +200,7 @@ table {
 }
 
 th {
-  background-color: Sienna;
+  background-color: #483d8b;
   color: whitesmoke;
   font-weight: normal;
 }
@@ -251,6 +251,11 @@ th:hover {
   font-size: 15px;
   color: whitesmoke;
   padding: 0;
+}
+
+.filterContainer{
+  margin-top: 30px;
+  width: 100px;
 }
 
 #myInput {
