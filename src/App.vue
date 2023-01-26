@@ -3,8 +3,8 @@
 </template>
 
 <script>
-  export default {
-  name: 'App',
+export default {
+    name: 'App',
 }
 </script>
 
@@ -47,6 +47,12 @@ body{
 
 .menu-container{
 
+}
+
+#chartContainer{
+  margin-top: 50px;
+  width: 300px;
+  height: 300px;
 }
 
 .register input{

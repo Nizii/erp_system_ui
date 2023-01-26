@@ -161,6 +161,10 @@
             <v-contextmenu-item class="item" v-on:click="deleteRow()">Löschen</v-contextmenu-item>
           </v-contextmenu>
     </table>
+    <div id="chartContainer">
+        <canvas id="myChart" width="100" height="100"/>
+    </div>
+
 </body>
 </template>
 
@@ -169,8 +173,15 @@ import Header from './Header.vue';
 import axios from 'axios';
 import { directive, Contextmenu, ContextmenuItem } from "v-contextmenu";
 import "v-contextmenu/dist/themes/default.css";
+import { onMounted } from '@vue/runtime-core';
+import Chart from 'chart.js/auto'
+
+
 
 export default {
+    components:{
+        
+    },
     directives: {
     contextmenu: directive,
 },
@@ -311,22 +322,29 @@ export default {
                 betrag += this.customerBill[i].Amount;
             }
         }
-        console.log("Betrag " + betrag);
-        //console.log(this.customerBill.IssuedOn.getDate());
-        //this.customerBill.IssuedOn = this.customerBill.IssuedOn.slice(0,-1);
+
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {  
+                labels: ['Offen','Bezahlt'],
+                datasets: [{
+                label: 'Bill Statistic',
+                data: [300, 50],
+                backgroundColor: ['rgb(255, 99, 132)','#4bc0c0'],
+                hoverOffset: 4
+                }]
+            },
+        });
         }
     },
 
     components: {
-        Header
+        Header,
     },
-
+    
     mounted() {
         this.loadData();
-    }
+    },
 }
 </script>
-
-<style>
-
-</style>

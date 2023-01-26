@@ -7,6 +7,7 @@ import InsertCustomer from './components/InsertCustomer'
 import UpdateCustomer from './components/UpdateCustomer'
 
 import InputForm from './components/InputForm'
+//
 
 import Product from './components/Product'
 import InsertProduct from './components/InsertProduct'
@@ -16,9 +17,17 @@ import CustomerBill from './components/CustomerBill'
 import InsertCustomerBill from './components/InsertCustomerBill'
 import UpdateCustomerBill from './components/UpdateCustomerBill'
 
+
 import { createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
+    /*
+    {
+        name:'Chart',
+        component:Chart,
+        path:'/chart'
+    },
+    */
     {
         name:'Home',
         component:Home,
