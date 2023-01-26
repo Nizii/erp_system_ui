@@ -45,6 +45,14 @@
             <input type="date" v-model="PaymentDate" id="dateInput" name="Fällig">
             <!--<input v-model="PaymentDate">-->
         </div>
+        <div class="inputContent">
+            <p class="inputLabel" >State</p>
+            <!--<input v-model="Currency">-->
+            <select name="select" v-model="State" id="select">
+                <option value="Offen">Offen</option>
+                <option value="Bezahlt">Bezahlt</option>
+            </select>
+        </div>
         <div class="addBtnContent">
             <button class="addInputBtn" type="button" v-on:click="add()">
                 OK
@@ -73,6 +81,7 @@ export default {
             Currency: "CHF",
             IssuedOn: "",
             PaymentDate: "",
+            State: ""
         }
     },
 
@@ -94,6 +103,7 @@ export default {
                 Currency:this.Currency,
                 IssuedOn:this.IssuedOn,
                 PaymentDate:this.PaymentDate,
+                State:this.State
             });
             if (result.status == 201 || result.status == 200) {
                 this.$router.push({name:"CustomerBill"});

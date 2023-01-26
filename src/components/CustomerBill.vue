@@ -45,6 +45,9 @@
                 Fällig
             </th>
             <th>
+                Status
+            </th>
+            <th>
       
             </th>
         </tr>
@@ -132,6 +135,7 @@
             <td>{{cbill.Currency}}</td>
             <td>{{cbill.IssuedOn}}</td>
             <td>{{cbill.PaymentDate}}</td>
+            <td>{{cbill.State}}</td>
             <td>
                 <div class="tableBtn" v-on:click="deleteCustomerBill(cbill.CustomerBillNr)" type="button">
                     <svg viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -165,7 +169,8 @@ export default {
             Amount: "",
             Currency: "",
             IssuedOn: "",
-            PaymentDate: ""
+            PaymentDate: "",
+            State: ""
         }
     },
 
@@ -184,7 +189,14 @@ export default {
         }
         let result = await axios.get("http://localhost:49146/api/CustomerBill");
         this.customerBill = result.data;
-        console.log(result.data.IssuedOn);
+
+        var betrag = 0;
+        for(var i = 0; i < this.customerBill.length; i++) {
+            if(this.customerBill[i].IssuedOn < Date.now) {
+                betrag += this.customerBill[i].Amount;
+            }
+        }
+        console.log("Betrag " + betrag);
         //console.log(this.customerBill.IssuedOn.getDate());
         //this.customerBill.IssuedOn = this.customerBill.IssuedOn.slice(0,-1);
         }

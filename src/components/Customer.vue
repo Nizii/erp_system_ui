@@ -164,6 +164,7 @@
         <v-contextmenu class="menu-container" ref="contextmenu">
             <v-contextmenu-item class="item" v-on:click="insertNew()">Neuen Kontakt erstellen</v-contextmenu-item>
             <v-contextmenu-item class="item" v-on:click="update()">Bearbeiten</v-contextmenu-item>
+            <v-contextmenu-item class="item" v-on:click="copy()">Dublizieren</v-contextmenu-item>
             <v-contextmenu-item class="item">Neue Rechnung</v-contextmenu-item>
             <v-contextmenu-item class="item">Rechnungen anzeigen</v-contextmenu-item>
             <v-contextmenu-item class="item">Neue Offerte</v-contextmenu-item>
@@ -232,12 +233,35 @@ export default {
             }
         },
 
-        insertNew(){
+        insertNew() {
             this.$router.push({name:'InsertCustomer'});
         },
 
-        update(){
+        update() {
             this.$router.push({path:'/updatecustomer/'+this.id});
+        },
+
+        async copy() {
+            var resp = await axios.get("http://localhost:49146/api/customer/"+this.id);
+            const result = await axios.post("http://localhost:49146/api/customer", {
+                CompanyName:resp.data.CompanyName,
+                Surname:resp.data.Surname,
+                Lastname:resp.data.Lastname,
+                Dob:resp.data.Dob,
+                Street:resp.data.Street,
+                Nr:resp.data.Nr,
+                Postcode:resp.data.Postcode,
+                Country:resp.data.Country,
+                Cellphone:resp.data.Cellphone,
+                Landlinephone:resp.data.Landlinephone,
+                Email:resp.data.Email,
+                Note:resp.data.Note
+            });
+            if (result.status == 201 || result.status == 200) {
+                this.$router.push({name:"Customer"});
+            } else {
+                alert("Result " + result.status);
+            }
         },
 
         async deleteRow(){
