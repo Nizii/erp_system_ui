@@ -18,34 +18,34 @@
                     </div>
                 </router-link>
             </th>
-            <th>
+            <th v-on:click="sort('CustomerBillNr')">
                 Rechungs Nr
             </th>
-            <th>
+            <th v-on:click="sort('CompanyName')">
                 Firma
             </th>
-            <th>
+            <th v-on:click="sort('ContactPerson')">
                 Ansprechsperson
             </th>
-            <th>
+            <th v-on:click="sort('CustomerStreet')">
                 Strasse
             </th>
-            <th>
+            <th v-on:click="sort('CustomerPostcode')">
                 PLZ
             </th>
-            <th>
+            <th v-on:click="sort('Amount')">
                 Betrag
             </th>
-            <th>
+            <th v-on:click="sort('Currency')">
                 Währung
             </th>
-            <th>
+            <th v-on:click="sort('IssuedOn')">
                 Ausgestellt
             </th>
-            <th>
+            <th v-on:click="sort('PaymentDate')">
                 Fällig
             </th>
-            <th>
+            <th v-on:click="sort('State')">
                 Status
             </th>
             <th>
@@ -269,6 +269,15 @@ export default {
                 this.$router.push({name:"CustomerBill"});
             } else {
                 alert("Result " + result.status);
+            }
+        },
+
+        async sort(value){
+            let result = await axios.get("http://localhost:49146/api/customerbill/value/"+value);
+            if(result.data == null){
+                console.log("No Data");
+            } else {
+                this.customerBill = result.data;
             }
         },
 

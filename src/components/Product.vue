@@ -18,28 +18,28 @@
                     </div>
                 </router-link>
             </th>
-            <th>
+            <th v-on:click="sort('product_nr')">
                 Nr
             </th>
-            <th>
+            <th v-on:click="sort('product_name')">
                 Artikel
             </th>
-            <th>
+            <th v-on:click="sort('product_size')">
                 Grösse
             </th>
-            <th>
+            <th v-on:click="sort('description')">
                 Beschreibung
             </th>
-            <th>
+            <th v-on:click="sort('units_available')">
                 Verfügbar
             </th>
-            <th>
+            <th v-on:click="sort('unit')">
                 Einheit
             </th>
-            <th>
+            <th v-on:click="sort('purchasing_price_per_unit')">
                 Einkauf (CHF)
             </th>
-            <th>
+            <th v-on:click="sort('selling_price_per_unit')">
                 Verkauf (CHF)
             </th>
             <th>
@@ -258,6 +258,15 @@ export default {
                 this.$router.push({name:"Product"});
             } else {
                 alert("Result " + result.status);
+            }
+        },
+
+        async sort(value){
+            let result = await axios.get("http://localhost:49146/api/product/value/"+value);
+            if(result.data == null){
+                console.log("No Data");
+            } else {
+                this.products = result.data;
             }
         },
 

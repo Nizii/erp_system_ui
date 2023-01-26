@@ -109,6 +109,7 @@ body{
   color:black;
 }
 
+
 .addBtn{
   background-color: #52BE80;
 }
@@ -222,9 +223,13 @@ tr:nth-child(even){background-color:  #f2f2f2}
 }
 
 tr:hover {
-  background-color: #f7f597;
+  background-color: #bcc2f3;
 }
 .pointer {cursor: pointer;}
+
+th:hover {
+  background-color: #7a260e;
+}.pointer {cursor: pointer;}
 
 
 .tableBtn{

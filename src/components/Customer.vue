@@ -18,43 +18,43 @@
                     </div>
                 </router-link>
             </th>
-            <th>
+            <th v-on:click="sort('CustomerNr')">
                 Kunden Nr
             </th>
-            <th>
+            <th v-on:click="sort('CompanyName')">
                 Firma
             </th>
-            <th>
+            <th v-on:click="sort('Surname')">
                 Vorname
             </th>
-            <th>
+            <th v-on:click="sort('Lastname')">
                 Nachname
             </th>
-            <th>
+            <th v-on:click="sort('Dob')">
                 Geburtsdatum
             </th>
-            <th>
+            <th v-on:click="sort('Street')">
                 Strasse
             </th>
-            <th>
+            <th v-on:click="sort('Nr')">
                 Nr
             </th>
-            <th>
+            <th v-on:click="sort('Postcode')">
                 PLZ
             </th>
-            <th>
+            <th v-on:click="sort('Country')">
                 Land
             </th>
-            <th>
+            <th v-on:click="sort('Cellphone')">
                 Mobil
             </th>
-            <th>
+            <th v-on:click="sort('Landlinephone')">
                 Festnetz
             </th>
-            <th>
+            <th v-on:click="sort('Note')">
                 Notitzen
             </th>
-            <th>
+            <th v-on:click="sort('Email')">
                 Email
             </th>
             <th>
@@ -282,6 +282,15 @@ export default {
                 this.loadData();
             } else {
                 console.log(result.data);
+            }
+        },
+
+        async sort(value){
+            let result = await axios.get("http://localhost:49146/api/customer/value/"+value);
+            if(result.data == null){
+                console.log("No Data");
+            } else {
+                this.customer = result.data;
             }
         },
 
