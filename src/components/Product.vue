@@ -3,7 +3,7 @@
 <h1>Produkte</h1>
 <body class="bodyInsideApp">
     <div class="filterContainer">
-        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Produkt filtern">
+        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Artikel filtern">
     </div>
     <table id="table" border = "1">
         <tr>

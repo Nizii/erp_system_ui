@@ -164,7 +164,7 @@
           </v-contextmenu>
     </table>
     <div id="chartContainer">
-        <canvas id="myChart" width="100" height="100"/>
+        <canvas id="myChart" width="100" height="auto"/>
     </div>
 
 </body>
@@ -331,10 +331,10 @@ export default {
             data: {  
                 labels: ['Offen','Bezahlt'],
                 datasets: [{
-                label: 'Bill Statistic',
+                label: 'CHF',
                 data: [300, 50],
-                backgroundColor: ['rgb(255, 99, 132)','#4bc0c0'],
-                hoverOffset: 4
+                backgroundColor: ['#e74c3c','#4caf50'],
+                hoverOffset: 20
                 }]
             },
         });

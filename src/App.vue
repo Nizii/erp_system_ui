@@ -52,7 +52,6 @@ body{
 #chartContainer{
   margin-top: 50px;
   width: 300px;
-  height: 300px;
 }
 
 .register input{
@@ -169,8 +168,8 @@ form input {
   align-items: center;
   height: 50px;
   background-color: antiquewhite;
-  margin-left: 39%;
-  margin-right: 39%;  
+  margin-left: 37%;
+  margin-right: 37%;  
   margin-top: 0.3%;
   margin-bottom: 0.3%;
   padding-right: 0.33%;
