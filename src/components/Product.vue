@@ -48,6 +48,10 @@
 
             </th>
         </tr>
+        <!--
+        <tr v-for = "pro in products" :key="pro.product_nr" class="pointer" v-on:click="manageSelectedRow(1, pro.product_nr)" v-on:click.right="manageSelectedRow(2, pro.product_nr)" @contextmenu.prevent="handler" v-contextmenu:contextmenu :style="{ background: pro.units_available == 0 ? '#ff4500' : 'white', color: pro.units_available == 0 ? 'white' : 'black'}"     @mouseenter="hover = true"
+        @mouseleave="hover = false" :class="{ 'div-hover': hover }">
+        -->
         <tr v-for = "pro in products" :key="pro.product_nr" class="pointer" v-on:click="manageSelectedRow(1, pro.product_nr)" v-on:click.right="manageSelectedRow(2, pro.product_nr)" @contextmenu.prevent="handler" v-contextmenu:contextmenu>
             <td>
                 <router-link type="button" :to="'/updateProduct/'+ pro.product_nr">

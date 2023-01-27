@@ -49,6 +49,10 @@ body{
 
 }
 
+.units_available{
+  background-color: #EC7063;
+}
+
 .line{
   width: 100%;
   height: 0.5px;
@@ -280,6 +284,11 @@ tr:nth-child(even){background-color:  #f2f2f2}
 }
 
 tr:hover {
+  background-color: #bcc2f3;
+}
+.pointer {cursor: pointer;}
+
+.div-hover{
   background-color: #bcc2f3;
 }
 .pointer {cursor: pointer;}
