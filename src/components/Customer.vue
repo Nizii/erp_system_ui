@@ -3,7 +3,7 @@
 <h1>Kontakte</h1>
 <body class="bodyInsideApp">
     <div class="filterContainer">
-        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Firma filtern">
+        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Nach Firma filtern">
     </div>
     <table id="table" border = "1">
         <tr>
@@ -142,7 +142,7 @@
             <td>{{cus.CompanyName}}</td>
             <td>{{cus.Surname}}</td>
             <td>{{cus.Lastname}}</td>
-            <td>{{cus.Dob}}</td>
+            <td>{{cus.Dob.slice(0,10)}}</td>
             <td>{{cus.Street}}</td>
             <td>{{cus.Nr}}</td>
             <td>{{cus.Postcode}}</td>

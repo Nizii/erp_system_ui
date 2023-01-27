@@ -2,8 +2,37 @@
 <Header/>
 <h1>Kunden Rechnungen</h1>
 <body class="bodyInsideApp">
+    <div id="mainContainer">
+        <div class="line"/>
+        <div id="chartContainer">
+            <canvas id="myChart" width="100" height="auto"/>
+        </div>
+    <div id="balanceContainer">
+        <div id="balancetxtContainer">
+            <div class="balancetxtTitle">
+                <b>Bezahlt</b>
+            </div>
+            <div class="balancetxt">
+                {{this.PaidAmount}} CHF
+            </div>
+        </div>
+    </div>
+
+    <div id="balanceContainer">
+        <div id="balancetxtContainer">
+            <div class="balancetxtTitle">
+                <b>Offen</b>
+            </div>
+            <div class="balancetxt">
+                {{this.OpenAmount}} CHF
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="line"/>
     <div class="filterContainer">
-        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Firma filtern">
+        <input type="text" id="myInput" v-on:keyup="filter()" placeholder="Nach Firma filtern">
     </div>
     <table id="table" border = "1">
         <tr>
@@ -136,8 +165,8 @@
             <td>{{cbill.CustomerPostcode}}</td>
             <td>{{cbill.Amount}}</td>
             <td>{{cbill.Currency}}</td>
-            <td>{{cbill.IssuedOn}}</td>
-            <td>{{cbill.PaymentDate}}</td>
+            <td>{{cbill.IssuedOn.slice(0,10)}}</td>
+            <td>{{cbill.PaymentDate.slice(0,10)}}</td>
             <td>{{cbill.State}}</td>
             <td>
                 <div class="tableBtn" v-on:click="deleteCustomerBill(cbill.CustomerBillNr)" type="button">
@@ -163,9 +192,6 @@
             <v-contextmenu-item class="item" v-on:click="deleteRow()">Löschen</v-contextmenu-item>
           </v-contextmenu>
     </table>
-    <div id="chartContainer">
-        <canvas id="myChart" width="100" height="auto"/>
-    </div>
 
 </body>
 </template>
@@ -196,6 +222,8 @@ export default {
     name:'Home',
     data() {
         return {
+            PaidAmount:0,
+            OpenAmount:0,
             id:0,
             customerBill:[],
             CustomerBillNr:"",
@@ -241,14 +269,14 @@ export default {
         },
 
         filter(){
-            // Declare variables
+            
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("myInput");
             filter = input.value.toUpperCase();
             table = document.getElementById("table");
             tr = table.getElementsByTagName("tr");
 
-            // Loop through all table rows, and hide those who don't match the search query
+            
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[2];
                 if (td) {
@@ -318,10 +346,11 @@ export default {
         let result = await axios.get("http://localhost:49146/api/CustomerBill");
         this.customerBill = result.data;
 
-        var betrag = 0;
         for(var i = 0; i < this.customerBill.length; i++) {
-            if(this.customerBill[i].IssuedOn < Date.now) {
-                betrag += this.customerBill[i].Amount;
+            if(this.customerBill[i].State == "Offen") {
+                this.OpenAmount += this.customerBill[i].Amount;
+            } else {
+                this.PaidAmount += this.customerBill[i].Amount;
             }
         }
 
@@ -332,7 +361,7 @@ export default {
                 labels: ['Offen','Bezahlt'],
                 datasets: [{
                 label: 'CHF',
-                data: [300, 50],
+                data: [this.OpenAmount, this.PaidAmount],
                 backgroundColor: ['#e74c3c','#4caf50'],
                 hoverOffset: 20
                 }]

@@ -49,9 +49,60 @@ body{
 
 }
 
+.line{
+  width: 100%;
+  height: 0.5px;
+  background-color: #483d8b;
+
+}
+
+#mainContainer{
+  height: 270px;
+  width: 100%;
+}
+
+#balanceContainer{
+  display: inline;
+  float: left;
+  width: 20%;
+  height: 200px;
+  margin-top: 30px;
+  margin-left: 140px;
+  border:1px solid #483d8b;
+  
+}
+
+#balancetxtContainer{
+  text-align: left;
+  margin-left: 35%;
+  margin-top: 75px;
+}
+
+.balancetxtTitle{
+  margin-bottom: 3px;
+  
+}
+
+
+
 #chartContainer{
-  margin-top: 50px;
-  width: 300px;
+  width: 250px;
+  display: inline;
+  float: left;
+  margin-left: 5%;
+}
+
+#myInput {
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: auto; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 12px; /* Add some space below the input */
 }
 
 .register input{
@@ -196,6 +247,7 @@ table {
   border-radius: 4px;
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: 200px;
 }
 
 th {
@@ -257,16 +309,4 @@ th:hover {
   width: 100px;
 }
 
-#myInput {
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: auto; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 12px; /* Add some space below the input */
-}
 </style>
