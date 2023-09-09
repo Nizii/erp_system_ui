@@ -1,3 +1,7 @@
+# See ERP System on my portfolio website
+https://superlative-lebkuchen-a136be.netlify.app/
+
+
 # ERP System UI
 
 This project was about creating a full stack application from design to the implementation of the front and back end. The system contains three tables (Contacts, Bills and Products) where you can add, update or delete data. Furthermore, the system has a registration and a login page. You can also filter data and sort the columns. Furthermore, a chart was implemented with chart.js for the overview of the bills.
